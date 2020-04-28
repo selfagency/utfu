@@ -14,7 +14,7 @@
 ## Install
 
 ```sh
-yarn add uftu | npm install uftu
+yarn add utfu || npm install utfu
 ```
 
 ## Usage
@@ -22,13 +22,13 @@ yarn add uftu | npm install uftu
 Instantiate, then pass a string to either method, `hex` or `txt`. The former tries to do a regex search and replace for unicode chars. The latter tries to do a search and replace for characters in their typical misrendering (see chart [here](https://www.i18nqa.com/debug/utf8-debug.html)).
 
 ```javascript
-import Uftu from 'uftu'
+import Utfu from 'utfu'
 
 const dirtyText = 'On a certain level, it�s like shouting �fire� in a crowded theater.'
 
-const uftu = new Uftu()
+const utfu = new Utfu()
 
-const cleanText = uftu.hex(dirtyText) || uftu.txt(dirtyText)
+const cleanText = utfu.hex(dirtyText) || utfu.txt(dirtyText)
 ```
 
 ## Run tests
@@ -41,18 +41,19 @@ yarn run test
 
 👤 **Daniel Sieradski <daniel@self.agency>**
 
-* Website: [self.agency](https://self.agency)
-* Twitter: [@selfagency\_llc](https://twitter.com/selfagency_llc)
-* GitLab: [@selfagency](https://gitlab.com/selfagency)
-* LinkedIn: [@selfagency](https://linkedin.com/in/selfagency)
+- Website: [self.agency](https://self.agency)
+- Twitter: [@selfagency_llc](https://twitter.com/selfagency_llc)
+- GitLab: [@selfagency](https://gitlab.com/selfagency)
+- LinkedIn: [@selfagency](https://linkedin.com/in/selfagency)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://gitlab.com/selfagency/uftu/issues).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://gitlab.com/selfagency/utfu/issues).
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
