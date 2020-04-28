@@ -510,10 +510,5 @@ const txt = str => {
   return str;
 };
 
-var index = {
-  hex,
-  txt
-};
-
-export default index;
+export { hex, txt };
 //# sourceMappingURL=index.js.map

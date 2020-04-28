@@ -18,7 +18,4 @@ const txt = str => {
   return str;
 };
 
-export default {
-  hex,
-  txt
-};
+export { hex, txt };
