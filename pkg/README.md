@@ -19,14 +19,12 @@ yarn add utfu || npm install utfu
 
 ## Usage
 
-Instantiate, then pass a string to either method, `hex` or `txt`. The former tries to do a regex search and replace for unicode chars. The latter tries to do a search and replace for characters in their typical misrendering (see chart [here](https://www.i18nqa.com/debug/utf8-debug.html)).
+Pass a string to either method, `hex` or `txt`. The former tries to do a regex search and replace for unicode chars. The latter tries to do a search and replace for characters in their typical misrendering (see chart [here](https://www.i18nqa.com/debug/utf8-debug.html)).
 
 ```javascript
-import Utfu from 'utfu'
+import utfu from 'utfu'
 
 const dirtyText = 'On a certain level, it�s like shouting �fire� in a crowded theater.'
-
-const utfu = new Utfu()
 
 const cleanText = utfu.hex(dirtyText) || utfu.txt(dirtyText)
 ```

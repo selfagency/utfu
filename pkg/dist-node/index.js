@@ -496,13 +496,7 @@ var mappings = [{
   'misrender': 'Ã¿'
 }];
 
-class Utfu {
-  constructor(opts) {
-    for (let [k, v] in opts) {
-      this[k] = v;
-    }
-  }
-
+const utfu = {
   hex(str) {
     if (typeof str !== 'string') throw new Error('utfu requires a string to process');
     mappings.forEach(mapping => {
@@ -510,7 +504,7 @@ class Utfu {
       str = str.replace(hex, mapping.char);
     });
     return str;
-  }
+  },
 
   txt(str) {
     if (typeof str !== 'string') throw new Error('utfu requires a string to process');
@@ -521,7 +515,7 @@ class Utfu {
     return str;
   }
 
-}
+};
 
-exports.default = Utfu;
+exports.default = utfu;
 //# sourceMappingURL=index.js.map
