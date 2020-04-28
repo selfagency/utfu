@@ -1,7 +1,11 @@
 import mappings from "./mappings.js";
 
 class Utfu {
-  constructor() {}
+  constructor(opts) {
+    for (let [k, v] in opts) {
+      this[k] = v;
+    }
+  }
 
   hex(str) {
     if (typeof str !== 'string') throw new Error('utfu requires a string to process');

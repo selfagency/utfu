@@ -1,7 +1,7 @@
 {
   "name": "utfu",
   "description": "Attempts to fix busted character encodings carried over from legacy text formats.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "files": [
     "dist-*/",
