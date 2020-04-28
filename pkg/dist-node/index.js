@@ -497,6 +497,8 @@ var mappings = [{
 }];
 
 class Utfu {
+  constructor() {}
+
   hex(str) {
     if (typeof str !== 'string') throw new Error('utfu requires a string to process');
     mappings.forEach(mapping => {
