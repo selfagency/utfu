@@ -1,7 +1,5 @@
-import Utfu from '../src/index.js'
+import utfu from '../src/index.js'
 import mappings from '../src/mappings'
-
-const utfu = new Utfu()
 
 mappings.forEach(mapping => {
   const str = mapping.misrender
