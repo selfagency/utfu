@@ -14,7 +14,7 @@
 ## Install
 
 ```sh
-yarn add utfu | npm install utfu
+yarn add utfu || npm install utfu
 ```
 
 ## Usage
