@@ -1,0 +1,57 @@
+{
+  "parserOptions": {
+    "sourceType": "module",
+    "parser": "babel-eslint",
+    "allowImportExportEverywhere": true,
+    "ecmaVersion": 2017,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "commonjs": true,
+    "es6": true
+  },
+  "extends": ["plugin:security/recommended"],
+  "plugins": ["import", "node", "prettier", "promise", "security", "standard"],
+  "rules": {
+    "indent": ["off"],
+    "no-eval": ["error"],
+    "no-script-url": ["error"],
+    "linebreak-style": ["warn", "unix"],
+    "quotes": ["warn", "single"],
+    "semi": ["warn", "never"],
+    "no-undef": ["off"],
+    "require-jsdoc": [
+      "off",
+      {
+        "require": null,
+        "FunctionDeclaration": [true],
+        "MethodDefinition": [true],
+        "ClassDeclaration": [true],
+        "ArrowFunctionExpression": [true],
+        "FunctionExpression": [true]
+      }
+    ],
+    "valid-jsdoc": ["warn"],
+    "no-useless-escape": ["off"],
+    "key-spacing": ["off"],
+    "wrap-iife": ["error", "inside"],
+    "handle-callback-err": ["error"],
+    "callback-return": ["error"],
+    "no-mixed-requires": ["error"],
+    "no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "i|res|next|^err"
+      }
+    ],
+    "security/detect-non-literal-fs-filename": ["off"],
+    "security/detect-non-literal-regexp": ["off"],
+    "security/detect-non-literal-require": ["off"],
+    "security/detect-object-injection": ["off"],
+    "vue/html-self-closing": ["off"],
+    "vue/no-v-html": ["off"],
+    "vue/max-attributes-per-line": ["off"]
+  }
+}
