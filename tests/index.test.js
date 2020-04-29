@@ -1,13 +1,24 @@
-import utfu from '../src/index.js'
-import mappings from '../src/mappings'
+import { hex, txt } from '../src/index.js'
+import { solo, duo, trio } from '../src/mappings'
 
-mappings.forEach(mapping => {
-  const str = mapping.misrender
-  test(`replace ${mapping.misrender} with ${mapping.char}`, () => {
-    expect(utfu.hex(str)).toBe(mapping.char)
+trio.forEach(mapping => {
+  const str = mapping.misrender.chars
+  test(`replace ${str} with ${mapping.utf8.char}`, () => {
+    expect(txt(str)).toBe(mapping.utf8.char)
   })
 
-  test(`replace ${mapping.misrender} with ${mapping.char}`, () => {
-    expect(utfu.txt(str)).toBe(mapping.char)
+  test(`replace ${str} with ${mapping.utf8.hex}`, () => {
+    expect(hex(str)).toBe(mapping.utf8.hex)
+  })
+})
+
+duo.forEach(mapping => {
+  const str = mapping.misrender.chars
+  test(`replace ${str} with ${mapping.utf8.char}`, () => {
+    expect(txt(str)).toBe(mapping.utf8.char)
+  })
+
+  test(`replace ${str} with ${mapping.utf8.hex}`, () => {
+    expect(hex(str)).toBe(mapping.utf8.hex)
   })
 })
