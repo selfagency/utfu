@@ -1,7 +1,7 @@
 {
   "name": "utfu",
   "description": "Replaces busted characters carried over from legacy text encodings with the proper UTF-8 character.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "license": "MIT",
   "files": [
     "dist-*/",
