@@ -3,31 +3,40 @@ import win from 'windows-1252'
 
 import mappings from './mappings.js'
 
+// error msg
+const err = new Error('utfu requires a string to process')
+
+// check if string
+const notStr = str => {
+  return typeof str !== 'string'
+}
+
+// parser
+const runMap = (str, m, html) => {
+  if (notStr(str)) throw err
+
+  str = win.decode(win.encode(str))
+
+  for (let map of mappings) {
+    str = str.replace(map.misrender.regex, html ? he.encode(map.utf8[m]) : map.utf8[m])
+  }
+
+  return str
+}
+
+// hex code replacement
 const hex = str => {
-  if (typeof str !== 'string') throw new Error('utfu requires a string to process')
-  str = win.decode(win.encode(str))
-  mappings.forEach(mapping => {
-    str = str.replace(mapping.misrender.regex, mapping.utf8.hex)
-  })
-  return str
+  return runMap(str, 'hex')
 }
 
-const txt = str => {
-  if (typeof str !== 'string') throw new Error('utfu requires a string to process')
-  str = win.decode(win.encode(str))
-  mappings.forEach(mapping => {
-    str = str.replace(mapping.misrender.regex, mapping.utf8.chars)
-  })
-  return str
-}
-
+// html replacement
 const htx = str => {
-  if (typeof str !== 'string') throw new Error('utfu requires a string to process')
-  str = win.decode(win.encode(str))
-  mappings.forEach(mapping => {
-    str = str.replace(mapping.misrender.regex, he.encode(mapping.utf8.chars))
-  })
-  return str
+  return runMap(str, 'chars', true)
 }
 
-export { hex, txt, htx }
+// text replacement
+const txt = str => {
+  return runMap(str, 'chars')
+}
+
+export { hex, htx, txt }
