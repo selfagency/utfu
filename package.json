@@ -22,7 +22,7 @@
       ]
     ]
   },
-  "description": "Replaces busted characters carried over from legacy text encodings with the proper UTF-8 character.",
+  "description": "Replaces busted characters carried over from legacy text encodings with the proper UTF-8 characters.",
   "keywords": [
     "utf",
     "utf-8",

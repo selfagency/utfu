@@ -21,11 +21,11 @@ yarn add utfu || npm install utfu
 
 Say you've got a string that looks like this:
 
-`There's no way I'm paying â‚¬30 for that!`
+`Thereâ€™s no way Iâ€™m paying â‚¬30 for that!`
 
 Pass it to either method, `hex`, `txt`, or `htx` and you'll hopefully get back:
 
-`There's no way I'm paying €30 for that!`
+`There’s no way I’m paying €30 for that!`
 
 `hex` substitutes unicode hex values (ie., `\u20ac`), which is useful in some contexts. `txt` substitutes the actual character (ie., `€`). And `htx` substitutes the HTML escape sequence (ie., `&#x20AC;`). See chart [here](https://www.i18nqa.com/debug/utf8-debug.html) for mappings.
 
@@ -39,7 +39,7 @@ const cleanText = hex(dirtyText) || txt(dirtyText)
 // --> 'On a certain level, it’s like shouting “fire” in a crowded theater.'
 
 const cleanHTML = htx(dirtyText)
-// --> 'On a certain level, it&#x2019;’s like shouting &#x201C;fire&#x201D; in a crowded theater.'
+// --> 'On a certain level, it&#x2019;s like shouting &#x201C;fire&#x201D; in a crowded theater.'
 ```
 
 ## Run tests
