@@ -39,7 +39,7 @@ const cleanText = hex(dirtyText) || txt(dirtyText)
 // --> 'On a certain level, it’s like shouting “fire” in a crowded theater.'
 
 const cleanHTML = htx(dirtyText)
-// --> 'On a certain level, it’s like shouting “fire” in a crowded theater.'
+// --> 'On a certain level, it&#x2019;’s like shouting &#x201C;fire&#x201D; in a crowded theater.'
 ```
 
 ## Run tests
@@ -50,7 +50,7 @@ yarn run test
 
 ## Author
 
-👤 **Daniel Sieradski <daniel@self.agency>**
+👤 **Daniel Sieradski <hello@self.agency>**
 
 - Website: [self.agency](https://self.agency)
 - Twitter: [@selfagency_llc](https://twitter.com/selfagency_llc)

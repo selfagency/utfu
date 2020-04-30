@@ -1,1305 +1,2588 @@
-const solo = [{
-  utf8: {
-    char: 'Á',
-    regex: /\u00C1/gu,
-    hex: '\u00C1'
-  },
-  alt: [{
-    char: 'à',
-    regex: /\u00E0/gu,
-    hex: '\u00E0'
-  }, {
-    char: 'í',
-    regex: /\u00ED/gu,
-    hex: '\u00ED'
-  }, {
-    char: 'Í',
-    regex: /\u00CD/gu,
-    hex: '\u00CD'
-  }, {
-    char: 'Ï',
-    regex: /\u00CF/gu,
-    hex: '\u00CF'
-  }, {
-    char: 'Ð',
-    regex: /\u00D0/gu,
-    hex: '\u00D0'
-  }, {
-    char: 'Ý',
-    regex: /\u00DD/gu,
-    hex: '\u00DD'
-  }],
-  misrender: {
-    chars: 'Ã',
-    regex: /\u00C3/gu,
-    hex: '\u00C3'
-  }
-}, {
-  utf8: {
-    char: '',
-    regex: /\u00A0/gu,
-    hex: '\u00A0'
-  },
-  misrender: {
-    chars: 'Â',
-    regex: /\u00C2/gu,
-    hex: '\u00C2'
-  }
-}, {
-  utf8: {
-    char: 'Š',
-    regex: /\u0160/gu,
-    hex: '\u0160'
-  },
-  misrender: {
-    chars: 'Å',
-    regex: /\u00C5/gu,
-    hex: '\u00C5'
-  }
-}];
-const duo = [{
-  utf8: {
-    char: 'À',
-    regex: /\u00C0/gu,
-    hex: '\u00C0'
-  },
-  misrender: {
-    chars: 'Ã€',
-    regex: /\u00C3\u20AC/gu,
-    hex: '\u00C3\u20AC'
-  }
-}, {
-  utf8: {
-    char: 'Â',
-    regex: /\u00C2/gu,
-    hex: '\u00C2'
-  },
-  misrender: {
-    chars: 'Ã‚',
-    regex: /\u00C3\u201A/gu,
-    hex: '\u00C3\u201A'
-  }
-}, {
-  utf8: {
-    char: 'ƒ',
-    regex: /\u0192/gu,
-    hex: '\u0192'
-  },
-  misrender: {
-    chars: 'Æ’',
-    regex: /\u00C6\u2019/gu,
-    hex: '\u00C6\u2019'
-  }
-}, {
-  utf8: {
-    char: 'Ã',
-    regex: /\u00C3/gu,
-    hex: '\u00C3'
-  },
-  misrender: {
-    chars: 'Ãƒ',
-    regex: /\u00C3\u0192/gu,
-    hex: '\u00C3\u0192'
-  }
-}, {
-  utf8: {
-    char: 'Ä',
-    regex: /\u00C4/gu,
-    hex: '\u00C4'
-  },
-  misrender: {
-    chars: 'Ã„',
-    regex: /\u00C3\u201E/gu,
-    hex: '\u00C3\u201E'
-  }
-}, {
-  utf8: {
-    char: 'Å',
-    regex: /\u00C5/gu,
-    hex: '\u00C5'
-  },
-  misrender: {
-    chars: 'Ã…',
-    regex: /\u00C3\u2026/gu,
-    hex: '\u00C3\u2026'
-  }
-}, {
-  utf8: {
-    char: '†',
-    regex: /\u2020/gu,
-    hex: '\u2020'
-  },
-  misrender: {
-    chars: 'â€',
-    regex: /\u00E2\u20AC/gu,
-    hex: '\u00E2\u20AC'
-  }
-}, {
-  utf8: {
-    char: 'Æ',
-    regex: /\u00C6/gu,
-    hex: '\u00C6'
-  },
-  misrender: {
-    chars: 'Ã†',
-    regex: /\u00C3\u2020/gu,
-    hex: '\u00C3\u2020'
-  }
-}, {
-  utf8: {
-    char: 'Ç',
-    regex: /\u00C7/gu,
-    hex: '\u00C7'
-  },
-  misrender: {
-    chars: 'Ã‡',
-    regex: /\u00C3\u2021/gu,
-    hex: '\u00C3\u2021'
-  }
-}, {
-  utf8: {
-    char: 'ˆ',
-    regex: /\u02C6/gu,
-    hex: '\u02C6'
-  },
-  misrender: {
-    chars: 'Ë†',
-    regex: /\u00CB\u2020/gu,
-    hex: '\u00CB\u2020'
-  }
-}, {
-  utf8: {
-    char: 'È',
-    regex: /\u00C8/gu,
-    hex: '\u00C8'
-  },
-  misrender: {
-    chars: 'Ãˆ',
-    regex: /\u00C3\u02C6/gu,
-    hex: '\u00C3\u02C6'
-  }
-}, {
-  utf8: {
-    char: 'É',
-    regex: /\u00C9/gu,
-    hex: '\u00C9'
-  },
-  misrender: {
-    chars: 'Ã‰',
-    regex: /\u00C3\u2030/gu,
-    hex: '\u00C3\u2030'
-  }
-}, {
-  utf8: {
-    char: 'ž',
-    regex: /\u017E/gu,
-    hex: '\u017E'
-  },
-  misrender: {
-    chars: 'Å¾',
-    regex: /\u00C5\u00BE/gu,
-    hex: '\u00C5\u00BE'
-  }
-}, {
-  utf8: {
-    char: 'Û',
-    regex: /\u00DB/gu,
-    hex: '\u00DB'
-  },
-  misrender: {
-    chars: 'Ã›',
-    regex: /\u00C3\u203A/gu,
-    hex: '\u00C3\u203A'
-  }
-}, {
-  utf8: {
-    char: 'œ',
-    regex: /\u0153/gu,
-    hex: '\u0153'
-  },
-  misrender: {
-    chars: 'Å“',
-    regex: /\u00C5\u201C/gu,
-    hex: '\u00C5\u201C'
-  }
-}, {
-  utf8: {
-    char: 'Ü',
-    regex: /\u00DC/gu,
-    hex: '\u00DC'
-  },
-  misrender: {
-    chars: 'Ãœ',
-    regex: /\u00C3\u0153/gu,
-    hex: '\u00C3\u0153'
-  }
-}, {
-  utf8: {
-    char: 'Þ',
-    regex: /\u00DE/gu,
-    hex: '\u00DE'
-  },
-  misrender: {
-    chars: 'Ãž',
-    regex: /\u00C3\u017E/gu,
-    hex: '\u00C3\u017E'
-  }
-}, {
-  utf8: {
-    char: 'Ÿ',
-    regex: /\u0178/gu,
-    hex: '\u0178'
-  },
-  misrender: {
-    chars: 'Å¸',
-    regex: /\u00C5\u00B8/gu,
-    hex: '\u00C5\u00B8'
-  }
-}, {
-  utf8: {
-    char: 'ß',
-    regex: /\u00DF/gu,
-    hex: '\u00DF'
-  },
-  misrender: {
-    chars: 'ÃŸ',
-    regex: /\u00C3\u0178/gu,
-    hex: '\u00C3\u0178'
-  }
-}, {
-  utf8: {
-    char: '®',
-    regex: /\u00AE/gu,
-    hex: '\u00AE'
-  },
-  misrender: {
-    chars: 'Â®',
-    regex: /\u00C2\u00AE/gu,
-    hex: '\u00C2\u00AE'
-  }
-}, {
-  utf8: {
-    char: 'î',
-    regex: /\u00EE/gu,
-    hex: '\u00EE'
-  },
-  misrender: {
-    chars: 'Ã®',
-    regex: /\u00C3\u00AE/gu,
-    hex: '\u00C3\u00AE'
-  }
-}, {
-  utf8: {
-    char: '¯',
-    regex: /\u00AF/gu,
-    hex: '\u00AF'
-  },
-  misrender: {
-    chars: 'Â¯',
-    regex: /\u00C2\u00AF/gu,
-    hex: '\u00C2\u00AF'
-  }
-}, {
-  utf8: {
-    char: 'ï',
-    regex: /\u00EF/gu,
-    hex: '\u00EF'
-  },
-  misrender: {
-    chars: 'Ã¯',
-    regex: /\u00C3\u00AF/gu,
-    hex: '\u00C3\u00AF'
-  }
-}, {
-  utf8: {
-    char: '°',
-    regex: /\u00B0/gu,
-    hex: '\u00B0'
-  },
-  misrender: {
-    chars: 'Â°',
-    regex: /\u00C2\u00B0/gu,
-    hex: '\u00C2\u00B0'
-  }
-}, {
-  utf8: {
-    char: 'ð',
-    regex: /\u00F0/gu,
-    hex: '\u00F0'
-  },
-  misrender: {
-    chars: 'Ã°',
-    regex: /\u00C3\u00B0/gu,
-    hex: '\u00C3\u00B0'
-  }
-}, {
-  utf8: {
-    char: '±',
-    regex: /\u00B1/gu,
-    hex: '\u00B1'
-  },
-  misrender: {
-    chars: 'Â±',
-    regex: /\u00C2\u00B1/gu,
-    hex: '\u00C2\u00B1'
-  }
-}, {
-  utf8: {
-    char: 'ñ',
-    regex: /\u00F1/gu,
-    hex: '\u00F1'
-  },
-  misrender: {
-    chars: 'Ã±',
-    regex: /\u00C3\u00B1/gu,
-    hex: '\u00C3\u00B1'
-  }
-}, {
-  utf8: {
-    char: '¡',
-    regex: /\u00A1/gu,
-    hex: '\u00A1'
-  },
-  misrender: {
-    chars: 'Â¡',
-    regex: /\u00C2\u00A1/gu,
-    hex: '\u00C2\u00A1'
-  }
-}, {
-  utf8: {
-    char: 'á',
-    regex: /\u00E1/gu,
-    hex: '\u00E1'
-  },
-  misrender: {
-    chars: 'Ã¡',
-    regex: /\u00C3\u00A1/gu,
-    hex: '\u00C3\u00A1'
-  }
-}, {
-  utf8: {
-    char: '¢',
-    regex: /\u00A2/gu,
-    hex: '\u00A2'
-  },
-  misrender: {
-    chars: 'Â¢',
-    regex: /\u00C2\u00A2/gu,
-    hex: '\u00C2\u00A2'
-  }
-}, {
-  utf8: {
-    char: 'â',
-    regex: /\u00E2/gu,
-    hex: '\u00E2'
-  },
-  misrender: {
-    chars: 'Ã¢',
-    regex: /\u00C3\u00A2/gu,
-    hex: '\u00C3\u00A2'
-  }
-}, {
-  utf8: {
-    char: '£',
-    regex: /\u00A3/gu,
-    hex: '\u00A3'
-  },
-  misrender: {
-    chars: 'Â£',
-    regex: /\u00C2\u00A3/gu,
-    hex: '\u00C2\u00A3'
-  }
-}, {
-  utf8: {
-    char: 'ã',
-    regex: /\u00E3/gu,
-    hex: '\u00E3'
-  },
-  misrender: {
-    chars: 'Ã£',
-    regex: /\u00C3\u00A3/gu,
-    hex: '\u00C3\u00A3'
-  }
-}, {
-  utf8: {
-    char: '¤',
-    regex: /\u00A4/gu,
-    hex: '\u00A4'
-  },
-  misrender: {
-    chars: 'Â¤',
-    regex: /\u00C2\u00A4/gu,
-    hex: '\u00C2\u00A4'
-  }
-}, {
-  utf8: {
-    char: 'ä',
-    regex: /\u00E4/gu,
-    hex: '\u00E4'
-  },
-  misrender: {
-    chars: 'Ã¤',
-    regex: /\u00C3\u00A4/gu,
-    hex: '\u00C3\u00A4'
-  }
-}, {
-  utf8: {
-    char: '¥',
-    regex: /\u00A5/gu,
-    hex: '\u00A5'
-  },
-  misrender: {
-    chars: 'Â¥',
-    regex: /\u00C2\u00A5/gu,
-    hex: '\u00C2\u00A5'
-  }
-}, {
-  utf8: {
-    char: 'å',
-    regex: /\u00E5/gu,
-    hex: '\u00E5'
-  },
-  misrender: {
-    chars: 'Ã¥',
-    regex: /\u00C3\u00A5/gu,
-    hex: '\u00C3\u00A5'
-  }
-}, {
-  utf8: {
-    char: '¦',
-    regex: /\u00A6/gu,
-    hex: '\u00A6'
-  },
-  misrender: {
-    chars: 'Â¦',
-    regex: /\u00C2\u00A6/gu,
-    hex: '\u00C2\u00A6'
-  }
-}, {
-  utf8: {
-    char: 'æ',
-    regex: /\u00E6/gu,
-    hex: '\u00E6'
-  },
-  misrender: {
-    chars: 'Ã¦',
-    regex: /\u00C3\u00A6/gu,
-    hex: '\u00C3\u00A6'
-  }
-}, {
-  utf8: {
-    char: '§',
-    regex: /\u00A7/gu,
-    hex: '\u00A7'
-  },
-  misrender: {
-    chars: 'Â§',
-    regex: /\u00C2\u00A7/gu,
-    hex: '\u00C2\u00A7'
-  }
-}, {
-  utf8: {
-    char: 'ç',
-    regex: /\u00E7/gu,
-    hex: '\u00E7'
-  },
-  misrender: {
-    chars: 'Ã§',
-    regex: /\u00C3\u00A7/gu,
-    hex: '\u00C3\u00A7'
-  }
-}, {
-  utf8: {
-    char: '¨',
-    regex: /\u00A8/gu,
-    hex: '\u00A8'
-  },
-  misrender: {
-    chars: 'Â¨',
-    regex: /\u00C2\u00A8/gu,
-    hex: '\u00C2\u00A8'
-  }
-}, {
-  utf8: {
-    char: 'è',
-    regex: /\u00E8/gu,
-    hex: '\u00E8'
-  },
-  misrender: {
-    chars: 'Ã¨',
-    regex: /\u00C3\u00A8/gu,
-    hex: '\u00C3\u00A8'
-  }
-}, {
-  utf8: {
-    char: 'Ù',
-    regex: /\u00D9/gu,
-    hex: '\u00D9'
-  },
-  misrender: {
-    chars: 'Ã™',
-    regex: /\u00C3\u2122/gu,
-    hex: '\u00C3\u2122'
-  }
-}, {
-  utf8: {
-    char: 'š',
-    regex: /\u0161/gu,
-    hex: '\u0161'
-  },
-  misrender: {
-    chars: 'Å¡',
-    regex: /\u00C5\u00A1/gu,
-    hex: '\u00C5\u00A1'
-  }
-}, {
-  utf8: {
-    char: 'Ú',
-    regex: /\u00DA/gu,
-    hex: '\u00DA'
-  },
-  misrender: {
-    chars: 'Ãš',
-    regex: /\u00C3\u0161/gu,
-    hex: '\u00C3\u0161'
-  }
-}, {
-  utf8: {
-    char: '©',
-    regex: /\u00A9/gu,
-    hex: '\u00A9'
-  },
-  misrender: {
-    chars: 'Â©',
-    regex: /\u00C2\u00A9/gu,
-    hex: '\u00C2\u00A9'
-  }
-}, {
-  utf8: {
-    char: 'é',
-    regex: /\u00E9/gu,
-    hex: '\u00E9'
-  },
-  misrender: {
-    chars: 'Ã©',
-    regex: /\u00C3\u00A9/gu,
-    hex: '\u00C3\u00A9'
-  }
-}, {
-  utf8: {
-    char: 'ª',
-    regex: /\u00AA/gu,
-    hex: '\u00AA'
-  },
-  misrender: {
-    chars: 'Âª',
-    regex: /\u00C2\u00AA/gu,
-    hex: '\u00C2\u00AA'
-  }
-}, {
-  utf8: {
-    char: 'ê',
-    regex: /\u00EA/gu,
-    hex: '\u00EA'
-  },
-  misrender: {
-    chars: 'Ãª',
-    regex: /\u00C3\u00AA/gu,
-    hex: '\u00C3\u00AA'
-  }
-}, {
-  utf8: {
-    char: '«',
-    regex: /\u00AB/gu,
-    hex: '\u00AB'
-  },
-  misrender: {
-    chars: 'Â«',
-    regex: /\u00C2\u00AB/gu,
-    hex: '\u00C2\u00AB'
-  }
-}, {
-  utf8: {
-    char: 'ë',
-    regex: /\u00EB/gu,
-    hex: '\u00EB'
-  },
-  misrender: {
-    chars: 'Ã«',
-    regex: /\u00C3\u00AB/gu,
-    hex: '\u00C3\u00AB'
-  }
-}, {
-  utf8: {
-    char: '¬',
-    regex: /\u00AC/gu,
-    hex: '\u00AC'
-  },
-  misrender: {
-    chars: 'Â¬',
-    regex: /\u00C2\u00AC/gu,
-    hex: '\u00C2\u00AC'
-  }
-}, {
-  utf8: {
-    char: 'ì',
-    regex: /\u00EC/gu,
-    hex: '\u00EC'
-  },
-  misrender: {
-    chars: 'Ã¬',
-    regex: /\u00C3\u00AC/gu,
-    hex: '\u00C3\u00AC'
-  }
-}, {
-  utf8: {
-    char: '²',
-    regex: /\u00B2/gu,
-    hex: '\u00B2'
-  },
-  misrender: {
-    chars: 'Â²',
-    regex: /\u00C2\u00B2/gu,
-    hex: '\u00C2\u00B2'
-  }
-}, {
-  utf8: {
-    char: 'ò',
-    regex: /\u00F2/gu,
-    hex: '\u00F2'
-  },
-  misrender: {
-    chars: 'Ã²',
-    regex: /\u00C3\u00B2/gu,
-    hex: '\u00C3\u00B2'
-  }
-}, {
-  utf8: {
-    char: '³',
-    regex: /\u00B3/gu,
-    hex: '\u00B3'
-  },
-  misrender: {
-    chars: 'Â³',
-    regex: /\u00C2\u00B3/gu,
-    hex: '\u00C2\u00B3'
-  }
-}, {
-  utf8: {
-    char: 'ó',
-    regex: /\u00F3/gu,
-    hex: '\u00F3'
-  },
-  misrender: {
-    chars: 'Ã³',
-    regex: /\u00C3\u00B3/gu,
-    hex: '\u00C3\u00B3'
-  }
-}, {
-  utf8: {
-    char: '´',
-    regex: /\u00B4/gu,
-    hex: '\u00B4'
-  },
-  misrender: {
-    chars: 'Â´',
-    regex: /\u00C2\u00B4/gu,
-    hex: '\u00C2\u00B4'
-  }
-}, {
-  utf8: {
-    char: 'ô',
-    regex: /\u00F4/gu,
-    hex: '\u00F4'
-  },
-  misrender: {
-    chars: 'Ã´',
-    regex: /\u00C3\u00B4/gu,
-    hex: '\u00C3\u00B4'
-  }
-}, {
-  utf8: {
-    char: 'µ',
-    regex: /\u00B5/gu,
-    hex: '\u00B5'
-  },
-  misrender: {
-    chars: 'Âµ',
-    regex: /\u00C2\u00B5/gu,
-    hex: '\u00C2\u00B5'
-  }
-}, {
-  utf8: {
-    char: 'õ',
-    regex: /\u00F5/gu,
-    hex: '\u00F5'
-  },
-  misrender: {
-    chars: 'Ãµ',
-    regex: /\u00C3\u00B5/gu,
-    hex: '\u00C3\u00B5'
-  }
-}, {
-  utf8: {
-    char: '¶',
-    regex: /\u00B6/gu,
-    hex: '\u00B6'
-  },
-  misrender: {
-    chars: 'Â¶',
-    regex: /\u00C2\u00B6/gu,
-    hex: '\u00C2\u00B6'
-  }
-}, {
-  utf8: {
-    char: 'ö',
-    regex: /\u00F6/gu,
-    hex: '\u00F6'
-  },
-  misrender: {
-    chars: 'Ã¶',
-    regex: /\u00C3\u00B6/gu,
-    hex: '\u00C3\u00B6'
-  }
-}, {
-  utf8: {
-    char: '·',
-    regex: /\u00B7/gu,
-    hex: '\u00B7'
-  },
-  misrender: {
-    chars: 'Â·',
-    regex: /\u00C2\u00B7/gu,
-    hex: '\u00C2\u00B7'
-  }
-}, {
-  utf8: {
-    char: '÷',
-    regex: /\u00F7/gu,
-    hex: '\u00F7'
-  },
-  misrender: {
-    chars: 'Ã·',
-    regex: /\u00C3\u00B7/gu,
-    hex: '\u00C3\u00B7'
-  }
-}, {
-  utf8: {
-    char: '¸',
-    regex: /\u00B8/gu,
-    hex: '\u00B8'
-  },
-  misrender: {
-    chars: 'Â¸',
-    regex: /\u00C2\u00B8/gu,
-    hex: '\u00C2\u00B8'
-  }
-}, {
-  utf8: {
-    char: 'ø',
-    regex: /\u00F8/gu,
-    hex: '\u00F8'
-  },
-  misrender: {
-    chars: 'Ã¸',
-    regex: /\u00C3\u00B8/gu,
-    hex: '\u00C3\u00B8'
-  }
-}, {
-  utf8: {
-    char: '¹',
-    regex: /\u00B9/gu,
-    hex: '\u00B9'
-  },
-  misrender: {
-    chars: 'Â¹',
-    regex: /\u00C2\u00B9/gu,
-    hex: '\u00C2\u00B9'
-  }
-}, {
-  utf8: {
-    char: 'ù',
-    regex: /\u00F9/gu,
-    hex: '\u00F9'
-  },
-  misrender: {
-    chars: 'Ã¹',
-    regex: /\u00C3\u00B9/gu,
-    hex: '\u00C3\u00B9'
-  }
-}, {
-  utf8: {
-    char: 'º',
-    regex: /\u00BA/gu,
-    hex: '\u00BA'
-  },
-  misrender: {
-    chars: 'Âº',
-    regex: /\u00C2\u00BA/gu,
-    hex: '\u00C2\u00BA'
-  }
-}, {
-  utf8: {
-    char: 'ú',
-    regex: /\u00FA/gu,
-    hex: '\u00FA'
-  },
-  misrender: {
-    chars: 'Ãº',
-    regex: /\u00C3\u00BA/gu,
-    hex: '\u00C3\u00BA'
-  }
-}, {
-  utf8: {
-    char: '»',
-    regex: /\u00BB/gu,
-    hex: '\u00BB'
-  },
-  misrender: {
-    chars: 'Â»',
-    regex: /\u00C2\u00BB/gu,
-    hex: '\u00C2\u00BB'
-  }
-}, {
-  utf8: {
-    char: 'û',
-    regex: /\u00FB/gu,
-    hex: '\u00FB'
-  },
-  misrender: {
-    chars: 'Ã»',
-    regex: /\u00C3\u00BB/gu,
-    hex: '\u00C3\u00BB'
-  }
-}, {
-  utf8: {
-    char: '¼',
-    regex: /\u00BC/gu,
-    hex: '\u00BC'
-  },
-  misrender: {
-    chars: 'Â¼',
-    regex: /\u00C2\u00BC/gu,
-    hex: '\u00C2\u00BC'
-  }
-}, {
-  utf8: {
-    char: 'ü',
-    regex: /\u00FC/gu,
-    hex: '\u00FC'
-  },
-  misrender: {
-    chars: 'Ã¼',
-    regex: /\u00C3\u00BC/gu,
-    hex: '\u00C3\u00BC'
-  }
-}, {
-  utf8: {
-    char: '½',
-    regex: /\u00BD/gu,
-    hex: '\u00BD'
-  },
-  misrender: {
-    chars: 'Â½',
-    regex: /\u00C2\u00BD/gu,
-    hex: '\u00C2\u00BD'
-  }
-}, {
-  utf8: {
-    char: 'ý',
-    regex: /\u00FD/gu,
-    hex: '\u00FD'
-  },
-  misrender: {
-    chars: 'Ã½',
-    regex: /\u00C3\u00BD/gu,
-    hex: '\u00C3\u00BD'
-  }
-}, {
-  utf8: {
-    char: '¾',
-    regex: /\u00BE/gu,
-    hex: '\u00BE'
-  },
-  misrender: {
-    chars: 'Â¾',
-    regex: /\u00C2\u00BE/gu,
-    hex: '\u00C2\u00BE'
-  }
-}, {
-  utf8: {
-    char: 'þ',
-    regex: /\u00FE/gu,
-    hex: '\u00FE'
-  },
-  misrender: {
-    chars: 'Ã¾',
-    regex: /\u00C3\u00BE/gu,
-    hex: '\u00C3\u00BE'
-  }
-}, {
-  utf8: {
-    char: 'Ò',
-    regex: /\u00D2/gu,
-    hex: '\u00D2'
-  },
-  misrender: {
-    chars: 'Ã’',
-    regex: /\u00C3\u2019/gu,
-    hex: '\u00C3\u2019'
-  }
-}, {
-  utf8: {
-    char: '¿',
-    regex: /\u00BF/gu,
-    hex: '\u00BF'
-  },
-  misrender: {
-    chars: 'Â¿',
-    regex: /\u00C2\u00BF/gu,
-    hex: '\u00C2\u00BF'
-  }
-}, {
-  utf8: {
-    char: 'ÿ',
-    regex: /\u00FF/gu,
-    hex: '\u00FF'
-  },
-  misrender: {
-    chars: 'Ã¿',
-    regex: /\u00C3\u00BF/gu,
-    hex: '\u00C3\u00BF'
-  }
-}, {
-  utf8: {
-    char: '×',
-    regex: /\u00D7/gu,
-    hex: '\u00D7'
-  },
-  misrender: {
-    chars: 'Ã—',
-    regex: /\u00C3\u2014/gu,
-    hex: '\u00C3\u2014'
-  }
-}, {
-  utf8: {
-    char: '˜',
-    regex: /\u02DC/gu,
-    hex: '\u02DC'
-  },
-  misrender: {
-    chars: 'Ëœ',
-    regex: /\u00CB\u0153/gu,
-    hex: '\u00CB\u0153'
-  }
-}, {
-  utf8: {
-    char: 'Ø',
-    regex: /\u00D8/gu,
-    hex: '\u00D8'
-  },
-  misrender: {
-    chars: 'Ã˜',
-    regex: /\u00C3\u02DC/gu,
-    hex: '\u00C3\u02DC'
-  }
-}, {
-  utf8: {
-    char: 'Ó',
-    regex: /\u00D3/gu,
-    hex: '\u00D3'
-  },
-  misrender: {
-    chars: 'Ã“',
-    regex: /\u00C3\u201C/gu,
-    hex: '\u00C3\u201C'
-  }
-}, {
-  utf8: {
-    char: '”',
-    regex: /\u201D/gu,
-    hex: '\u201D'
-  },
-  misrender: {
-    chars: 'â€',
-    regex: /\u00E2\u20AC/gu,
-    hex: '\u00E2\u20AC'
-  }
-}, {
-  utf8: {
-    char: 'Ô',
-    regex: /\u00D4/gu,
-    hex: '\u00D4'
-  },
-  misrender: {
-    chars: 'Ã”',
-    regex: /\u00C3\u201D/gu,
-    hex: '\u00C3\u201D'
-  }
-}, {
-  utf8: {
-    char: 'Õ',
-    regex: /\u00D5/gu,
-    hex: '\u00D5'
-  },
-  misrender: {
-    chars: 'Ã•',
-    regex: /\u00C3\u2022/gu,
-    hex: '\u00C3\u2022'
-  }
-}, {
-  utf8: {
-    char: 'Ö',
-    regex: /\u00D6/gu,
-    hex: '\u00D6'
-  },
-  misrender: {
-    chars: 'Ã–',
-    regex: /\u00C3\u2013/gu,
-    hex: '\u00C3\u2013'
-  }
-}, {
-  utf8: {
-    char: 'Ë',
-    regex: /\u00CB/gu,
-    hex: '\u00CB'
-  },
-  misrender: {
-    chars: 'Ã‹',
-    regex: /\u00C3\u2039/gu,
-    hex: '\u00C3\u2039'
-  }
-}, {
-  utf8: {
-    char: 'Œ',
-    regex: /\u0152/gu,
-    hex: '\u0152'
-  },
-  misrender: {
-    chars: 'Å’',
-    regex: /\u00C5\u2019/gu,
-    hex: '\u00C5\u2019'
-  }
-}, {
-  utf8: {
-    char: 'Ì',
-    regex: /\u00CC/gu,
-    hex: '\u00CC'
-  },
-  misrender: {
-    chars: 'ÃŒ',
-    regex: /\u00C3\u0152/gu,
-    hex: '\u00C3\u0152'
-  }
-}, {
-  utf8: {
-    char: 'Ž',
-    regex: /\u017D/gu,
-    hex: '\u017D'
-  },
-  misrender: {
-    chars: 'Å½',
-    regex: /\u00C5\u00BD/gu,
-    hex: '\u00C5\u00BD'
-  }
-}, {
-  utf8: {
-    char: 'Î',
-    regex: /\u00CE/gu,
-    hex: '\u00CE'
-  },
-  misrender: {
-    chars: 'ÃŽ',
-    regex: /\u00C3\u017D/gu,
-    hex: '\u00C3\u017D'
-  }
-}, {
-  utf8: {
-    char: 'Ñ',
-    regex: /\u00D1/gu,
-    hex: '\u00D1'
-  },
-  misrender: {
-    chars: 'Ã‘',
-    regex: /\u00C3\u2018/gu,
-    hex: '\u00C3\u2018'
-  }
-}, {
-  utf8: {
-    char: 'Ê',
-    regex: /\u00CA/gu,
-    hex: '\u00CA'
-  },
-  misrender: {
-    chars: 'ÃŠ',
-    regex: /\u00C3\u0160/gu,
-    hex: '\u00C3\u0160'
-  }
-}];
-const trio = [{
-  utf8: {
-    char: '€',
-    regex: /\u20AC/gu,
-    hex: '\u20AC'
-  },
+module.exports = [{
   misrender: {
     chars: 'â‚¬',
-    regex: /\u00E2\u201A\u00AC/gu,
-    hex: '\u00E2\u201A\u00AC'
+    hex: '\u00e2\u201a\u00ac',
+    regex: /\u00e2\u201a\u00ac/gu
+  },
+  utf8: {
+    chars: '€',
+    hex: '\u20ac',
+    regex: /\u20ac/gu
   }
 }, {
-  utf8: {
-    char: '‚',
-    regex: /\u201A/gu,
-    hex: '\u201A'
-  },
   misrender: {
     chars: 'â€š',
-    regex: /\u00E2\u20AC\u0161/gu,
-    hex: '\u00E2\u20AC\u0161'
+    hex: '\u00e2\u20ac\u0161',
+    regex: /\u00e2\u20ac\u0161/gu
+  },
+  utf8: {
+    chars: '‚',
+    hex: '\u201a',
+    regex: /\u201a/gu
   }
 }, {
-  utf8: {
-    char: '„',
-    regex: /\u201E/gu,
-    hex: '\u201E'
-  },
   misrender: {
     chars: 'â€ž',
-    regex: /\u00E2\u20AC\u017E/gu,
-    hex: '\u00E2\u20AC\u017E'
+    hex: '\u00e2\u20ac\u017e',
+    regex: /\u00e2\u20ac\u017e/gu
+  },
+  utf8: {
+    chars: '„',
+    hex: '\u201e',
+    regex: /\u201e/gu
   }
 }, {
-  utf8: {
-    char: '…',
-    regex: /\u2026/gu,
-    hex: '\u2026'
-  },
   misrender: {
     chars: 'â€¦',
-    regex: /\u00E2\u20AC\u00A6/gu,
-    hex: '\u00E2\u20AC\u00A6'
+    hex: '\u00e2\u20ac\u00a6',
+    regex: /\u00e2\u20ac\u00a6/gu
+  },
+  utf8: {
+    chars: '…',
+    hex: '\u2026',
+    regex: /\u2026/gu
   }
 }, {
-  utf8: {
-    char: '‡',
-    regex: /\u2021/gu,
-    hex: '\u2021'
+  misrender: {
+    chars: 'â€ ',
+    hex: '\u00e2\u20ac\u00a0',
+    regex: /\u00e2\u20ac\u00a0/gu
   },
+  utf8: {
+    chars: '†',
+    hex: '\u2020',
+    regex: /\u2020/gu
+  }
+}, {
   misrender: {
     chars: 'â€¡',
-    regex: /\u00E2\u20AC\u00A1/gu,
-    hex: '\u00E2\u20AC\u00A1'
+    hex: '\u00e2\u20ac\u00a1',
+    regex: /\u00e2\u20ac\u00a1/gu
+  },
+  utf8: {
+    chars: '‡',
+    hex: '\u2021',
+    regex: /\u2021/gu
   }
 }, {
-  utf8: {
-    char: '‰',
-    regex: /\u2030/gu,
-    hex: '\u2030'
-  },
   misrender: {
     chars: 'â€°',
-    regex: /\u00E2\u20AC\u00B0/gu,
-    hex: '\u00E2\u20AC\u00B0'
+    hex: '\u00e2\u20ac\u00b0',
+    regex: /\u00e2\u20ac\u00b0/gu
+  },
+  utf8: {
+    chars: '‰',
+    hex: '\u2030',
+    regex: /\u2030/gu
   }
 }, {
-  utf8: {
-    char: '‹',
-    regex: /\u2039/gu,
-    hex: '\u2039'
-  },
   misrender: {
     chars: 'â€¹',
-    regex: /\u00E2\u20AC\u00B9/gu,
-    hex: '\u00E2\u20AC\u00B9'
+    hex: '\u00e2\u20ac\u00b9',
+    regex: /\u00e2\u20ac\u00b9/gu
+  },
+  utf8: {
+    chars: '‹',
+    hex: '\u2039',
+    regex: /\u2039/gu
   }
 }, {
-  utf8: {
-    char: '‘',
-    regex: /\u2018/gu,
-    hex: '\u2018'
-  },
   misrender: {
     chars: 'â€˜',
-    regex: /\u00E2\u20AC\u02DC/gu,
-    hex: '\u00E2\u20AC\u02DC'
+    hex: '\u00e2\u20ac\u02dc',
+    regex: /\u00e2\u20ac\u02dc/gu
+  },
+  utf8: {
+    chars: '‘',
+    hex: '\u2018',
+    regex: /\u2018/gu
   }
 }, {
-  utf8: {
-    char: '’',
-    regex: /\u2019/gu,
-    hex: '\u2019'
-  },
   misrender: {
     chars: 'â€™',
-    regex: /\u00E2\u20AC\u2122/gu,
-    hex: '\u00E2\u20AC\u2122'
+    hex: '\u00e2\u20ac\u2122',
+    regex: /\u00e2\u20ac\u2122/gu
+  },
+  utf8: {
+    chars: '’',
+    hex: '\u2019',
+    regex: /\u2019/gu
   }
 }, {
-  utf8: {
-    char: '“',
-    regex: /\u201C/gu,
-    hex: '\u201C'
-  },
   misrender: {
     chars: 'â€œ',
-    regex: /\u00E2\u20AC\u0153/gu,
-    hex: '\u00E2\u20AC\u0153'
+    hex: '\u00e2\u20ac\u0153',
+    regex: /\u00e2\u20ac\u0153/gu
+  },
+  utf8: {
+    chars: '“',
+    hex: '\u201c',
+    regex: /\u201c/gu
   }
 }, {
-  utf8: {
-    char: '•',
-    regex: /\u2022/gu,
-    hex: '\u2022'
+  misrender: {
+    chars: 'â€',
+    hex: '\u00e2\u20ac\u009d',
+    regex: /\u00e2\u20ac\u009d/gu
   },
+  utf8: {
+    chars: '”',
+    hex: '\u201d',
+    regex: /\u201d/gu
+  }
+}, {
   misrender: {
     chars: 'â€¢',
-    regex: /\u00E2\u20AC\u00A2/gu,
-    hex: '\u00E2\u20AC\u00A2'
+    hex: '\u00e2\u20ac\u00a2',
+    regex: /\u00e2\u20ac\u00a2/gu
+  },
+  utf8: {
+    chars: '•',
+    hex: '\u2022',
+    regex: /\u2022/gu
   }
 }, {
-  utf8: {
-    char: '–',
-    regex: /\u2013/gu,
-    hex: '\u2013'
-  },
   misrender: {
     chars: 'â€“',
-    regex: /\u00E2\u20AC\u201C/gu,
-    hex: '\u00E2\u20AC\u201C'
+    hex: '\u00e2\u20ac\u201c',
+    regex: /\u00e2\u20ac\u201c/gu
+  },
+  utf8: {
+    chars: '–',
+    hex: '\u2013',
+    regex: /\u2013/gu
   }
 }, {
-  utf8: {
-    char: '—',
-    regex: /\u2014/gu,
-    hex: '\u2014'
-  },
   misrender: {
     chars: 'â€”',
-    regex: /\u00E2\u20AC\u201D/gu,
-    hex: '\u00E2\u20AC\u201D'
+    hex: '\u00e2\u20ac\u201d',
+    regex: /\u00e2\u20ac\u201d/gu
+  },
+  utf8: {
+    chars: '—',
+    hex: '\u2014',
+    regex: /\u2014/gu
   }
 }, {
-  utf8: {
-    char: '™',
-    regex: /\u2122/gu,
-    hex: '\u2122'
-  },
   misrender: {
     chars: 'â„¢',
-    regex: /\u00E2\u201E\u00A2/gu,
-    hex: '\u00E2\u201E\u00A2'
+    hex: '\u00e2\u201e\u00a2',
+    regex: /\u00e2\u201e\u00a2/gu
+  },
+  utf8: {
+    chars: '™',
+    hex: '\u2122',
+    regex: /\u2122/gu
   }
 }, {
-  utf8: {
-    char: '›',
-    regex: /\u203A/gu,
-    hex: '\u203A'
-  },
   misrender: {
     chars: 'â€º',
-    regex: /\u00E2\u20AC\u00BA/gu,
-    hex: '\u00E2\u20AC\u00BA'
+    hex: '\u00e2\u20ac\u00ba',
+    regex: /\u00e2\u20ac\u00ba/gu
+  },
+  utf8: {
+    chars: '›',
+    hex: '\u203a',
+    regex: /\u203a/gu
   }
-}];
-export { solo, duo, trio };
+}, {
+  misrender: {
+    chars: 'â‚¬',
+    hex: '\u00e2\u201a\u00ac',
+    regex: /\u00e2\u201a\u00ac/gu
+  },
+  utf8: {
+    chars: '€',
+    hex: '\u20ac',
+    regex: /\u20ac/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€š',
+    hex: '\u00e2\u20ac\u0161',
+    regex: /\u00e2\u20ac\u0161/gu
+  },
+  utf8: {
+    chars: '‚',
+    hex: '\u201a',
+    regex: /\u201a/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€ž',
+    hex: '\u00e2\u20ac\u017e',
+    regex: /\u00e2\u20ac\u017e/gu
+  },
+  utf8: {
+    chars: '„',
+    hex: '\u201e',
+    regex: /\u201e/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€¦',
+    hex: '\u00e2\u20ac\u00a6',
+    regex: /\u00e2\u20ac\u00a6/gu
+  },
+  utf8: {
+    chars: '…',
+    hex: '\u2026',
+    regex: /\u2026/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€¡',
+    hex: '\u00e2\u20ac\u00a1',
+    regex: /\u00e2\u20ac\u00a1/gu
+  },
+  utf8: {
+    chars: '‡',
+    hex: '\u2021',
+    regex: /\u2021/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€°',
+    hex: '\u00e2\u20ac\u00b0',
+    regex: /\u00e2\u20ac\u00b0/gu
+  },
+  utf8: {
+    chars: '‰',
+    hex: '\u2030',
+    regex: /\u2030/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€¹',
+    hex: '\u00e2\u20ac\u00b9',
+    regex: /\u00e2\u20ac\u00b9/gu
+  },
+  utf8: {
+    chars: '‹',
+    hex: '\u2039',
+    regex: /\u2039/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€˜',
+    hex: '\u00e2\u20ac\u02dc',
+    regex: /\u00e2\u20ac\u02dc/gu
+  },
+  utf8: {
+    chars: '‘',
+    hex: '\u2018',
+    regex: /\u2018/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€™',
+    hex: '\u00e2\u20ac\u2122',
+    regex: /\u00e2\u20ac\u2122/gu
+  },
+  utf8: {
+    chars: '’',
+    hex: '\u2019',
+    regex: /\u2019/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€œ',
+    hex: '\u00e2\u20ac\u0153',
+    regex: /\u00e2\u20ac\u0153/gu
+  },
+  utf8: {
+    chars: '“',
+    hex: '\u201c',
+    regex: /\u201c/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€¢',
+    hex: '\u00e2\u20ac\u00a2',
+    regex: /\u00e2\u20ac\u00a2/gu
+  },
+  utf8: {
+    chars: '•',
+    hex: '\u2022',
+    regex: /\u2022/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€“',
+    hex: '\u00e2\u20ac\u201c',
+    regex: /\u00e2\u20ac\u201c/gu
+  },
+  utf8: {
+    chars: '–',
+    hex: '\u2013',
+    regex: /\u2013/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€”',
+    hex: '\u00e2\u20ac\u201d',
+    regex: /\u00e2\u20ac\u201d/gu
+  },
+  utf8: {
+    chars: '—',
+    hex: '\u2014',
+    regex: /\u2014/gu
+  }
+}, {
+  misrender: {
+    chars: 'â„¢',
+    hex: '\u00e2\u201e\u00a2',
+    regex: /\u00e2\u201e\u00a2/gu
+  },
+  utf8: {
+    chars: '™',
+    hex: '\u2122',
+    regex: /\u2122/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€º',
+    hex: '\u00e2\u20ac\u00ba',
+    regex: /\u00e2\u20ac\u00ba/gu
+  },
+  utf8: {
+    chars: '›',
+    hex: '\u203a',
+    regex: /\u203a/gu
+  }
+}, {
+  misrender: {
+    chars: 'Æ’',
+    hex: '\u00c6\u2019',
+    regex: /\u00c6\u2019/gu
+  },
+  utf8: {
+    chars: 'ƒ',
+    hex: '\u0192',
+    regex: /\u0192/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ë†',
+    hex: '\u00cb\u2020',
+    regex: /\u00cb\u2020/gu
+  },
+  utf8: {
+    chars: 'ˆ',
+    hex: '\u02c6',
+    regex: /\u02c6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å ',
+    hex: '\u00c5\u00a0',
+    regex: /\u00c5\u00a0/gu
+  },
+  utf8: {
+    chars: 'Š',
+    hex: '\u0160',
+    regex: /\u0160/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å’',
+    hex: '\u00c5\u2019',
+    regex: /\u00c5\u2019/gu
+  },
+  utf8: {
+    chars: 'Œ',
+    hex: '\u0152',
+    regex: /\u0152/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å½',
+    hex: '\u00c5\u00bd',
+    regex: /\u00c5\u00bd/gu
+  },
+  utf8: {
+    chars: 'Ž',
+    hex: '\u017d',
+    regex: /\u017d/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ëœ',
+    hex: '\u00cb\u0153',
+    regex: /\u00cb\u0153/gu
+  },
+  utf8: {
+    chars: '˜',
+    hex: '\u02dc',
+    regex: /\u02dc/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å¡',
+    hex: '\u00c5\u00a1',
+    regex: /\u00c5\u00a1/gu
+  },
+  utf8: {
+    chars: 'š',
+    hex: '\u0161',
+    regex: /\u0161/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å“',
+    hex: '\u00c5\u201c',
+    regex: /\u00c5\u201c/gu
+  },
+  utf8: {
+    chars: 'œ',
+    hex: '\u0153',
+    regex: /\u0153/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å¾',
+    hex: '\u00c5\u00be',
+    regex: /\u00c5\u00be/gu
+  },
+  utf8: {
+    chars: 'ž',
+    hex: '\u017e',
+    regex: /\u017e/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å¸',
+    hex: '\u00c5\u00b8',
+    regex: /\u00c5\u00b8/gu
+  },
+  utf8: {
+    chars: 'Ÿ',
+    hex: '\u0178',
+    regex: /\u0178/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â ',
+    hex: '\u00c2\u0020',
+    regex: /\u00c2\u0020/gu
+  },
+  utf8: {
+    chars: ' ',
+    hex: '\u0020',
+    regex: /\u0020/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¡',
+    hex: '\u00c2\u00a1',
+    regex: /\u00c2\u00a1/gu
+  },
+  utf8: {
+    chars: '¡',
+    hex: '\u00a1',
+    regex: /\u00a1/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¢',
+    hex: '\u00c2\u00a2',
+    regex: /\u00c2\u00a2/gu
+  },
+  utf8: {
+    chars: '¢',
+    hex: '\u00a2',
+    regex: /\u00a2/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â£',
+    hex: '\u00c2\u00a3',
+    regex: /\u00c2\u00a3/gu
+  },
+  utf8: {
+    chars: '£',
+    hex: '\u00a3',
+    regex: /\u00a3/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¤',
+    hex: '\u00c2\u00a4',
+    regex: /\u00c2\u00a4/gu
+  },
+  utf8: {
+    chars: '¤',
+    hex: '\u00a4',
+    regex: /\u00a4/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¥',
+    hex: '\u00c2\u00a5',
+    regex: /\u00c2\u00a5/gu
+  },
+  utf8: {
+    chars: '¥',
+    hex: '\u00a5',
+    regex: /\u00a5/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¦',
+    hex: '\u00c2\u00a6',
+    regex: /\u00c2\u00a6/gu
+  },
+  utf8: {
+    chars: '¦',
+    hex: '\u00a6',
+    regex: /\u00a6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â§',
+    hex: '\u00c2\u00a7',
+    regex: /\u00c2\u00a7/gu
+  },
+  utf8: {
+    chars: '§',
+    hex: '\u00a7',
+    regex: /\u00a7/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¨',
+    hex: '\u00c2\u00a8',
+    regex: /\u00c2\u00a8/gu
+  },
+  utf8: {
+    chars: '¨',
+    hex: '\u00a8',
+    regex: /\u00a8/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â©',
+    hex: '\u00c2\u00a9',
+    regex: /\u00c2\u00a9/gu
+  },
+  utf8: {
+    chars: '©',
+    hex: '\u00a9',
+    regex: /\u00a9/gu
+  }
+}, {
+  misrender: {
+    chars: 'Âª',
+    hex: '\u00c2\u00aa',
+    regex: /\u00c2\u00aa/gu
+  },
+  utf8: {
+    chars: 'ª',
+    hex: '\u00aa',
+    regex: /\u00aa/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â«',
+    hex: '\u00c2\u00ab',
+    regex: /\u00c2\u00ab/gu
+  },
+  utf8: {
+    chars: '«',
+    hex: '\u00ab',
+    regex: /\u00ab/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¬',
+    hex: '\u00c2\u00ac',
+    regex: /\u00c2\u00ac/gu
+  },
+  utf8: {
+    chars: '¬',
+    hex: '\u00ac',
+    regex: /\u00ac/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â­',
+    hex: '\u00c2\u00ad',
+    regex: /\u00c2\u00ad/gu
+  },
+  utf8: {
+    chars: '­',
+    hex: '\u00ad',
+    regex: /\u00ad/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â®',
+    hex: '\u00c2\u00ae',
+    regex: /\u00c2\u00ae/gu
+  },
+  utf8: {
+    chars: '®',
+    hex: '\u00ae',
+    regex: /\u00ae/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¯',
+    hex: '\u00c2\u00af',
+    regex: /\u00c2\u00af/gu
+  },
+  utf8: {
+    chars: '¯',
+    hex: '\u00af',
+    regex: /\u00af/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â°',
+    hex: '\u00c2\u00b0',
+    regex: /\u00c2\u00b0/gu
+  },
+  utf8: {
+    chars: '°',
+    hex: '\u00b0',
+    regex: /\u00b0/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â±',
+    hex: '\u00c2\u00b1',
+    regex: /\u00c2\u00b1/gu
+  },
+  utf8: {
+    chars: '±',
+    hex: '\u00b1',
+    regex: /\u00b1/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â²',
+    hex: '\u00c2\u00b2',
+    regex: /\u00c2\u00b2/gu
+  },
+  utf8: {
+    chars: '²',
+    hex: '\u00b2',
+    regex: /\u00b2/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â³',
+    hex: '\u00c2\u00b3',
+    regex: /\u00c2\u00b3/gu
+  },
+  utf8: {
+    chars: '³',
+    hex: '\u00b3',
+    regex: /\u00b3/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â´',
+    hex: '\u00c2\u00b4',
+    regex: /\u00c2\u00b4/gu
+  },
+  utf8: {
+    chars: '´',
+    hex: '\u00b4',
+    regex: /\u00b4/gu
+  }
+}, {
+  misrender: {
+    chars: 'Âµ',
+    hex: '\u00c2\u00b5',
+    regex: /\u00c2\u00b5/gu
+  },
+  utf8: {
+    chars: 'µ',
+    hex: '\u00b5',
+    regex: /\u00b5/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¶',
+    hex: '\u00c2\u00b6',
+    regex: /\u00c2\u00b6/gu
+  },
+  utf8: {
+    chars: '¶',
+    hex: '\u00b6',
+    regex: /\u00b6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â·',
+    hex: '\u00c2\u00b7',
+    regex: /\u00c2\u00b7/gu
+  },
+  utf8: {
+    chars: '·',
+    hex: '\u00b7',
+    regex: /\u00b7/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¸',
+    hex: '\u00c2\u00b8',
+    regex: /\u00c2\u00b8/gu
+  },
+  utf8: {
+    chars: '¸',
+    hex: '\u00b8',
+    regex: /\u00b8/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¹',
+    hex: '\u00c2\u00b9',
+    regex: /\u00c2\u00b9/gu
+  },
+  utf8: {
+    chars: '¹',
+    hex: '\u00b9',
+    regex: /\u00b9/gu
+  }
+}, {
+  misrender: {
+    chars: 'Âº',
+    hex: '\u00c2\u00ba',
+    regex: /\u00c2\u00ba/gu
+  },
+  utf8: {
+    chars: 'º',
+    hex: '\u00ba',
+    regex: /\u00ba/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â»',
+    hex: '\u00c2\u00bb',
+    regex: /\u00c2\u00bb/gu
+  },
+  utf8: {
+    chars: '»',
+    hex: '\u00bb',
+    regex: /\u00bb/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¼',
+    hex: '\u00c2\u00bc',
+    regex: /\u00c2\u00bc/gu
+  },
+  utf8: {
+    chars: '¼',
+    hex: '\u00bc',
+    regex: /\u00bc/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â½',
+    hex: '\u00c2\u00bd',
+    regex: /\u00c2\u00bd/gu
+  },
+  utf8: {
+    chars: '½',
+    hex: '\u00bd',
+    regex: /\u00bd/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¾',
+    hex: '\u00c2\u00be',
+    regex: /\u00c2\u00be/gu
+  },
+  utf8: {
+    chars: '¾',
+    hex: '\u00be',
+    regex: /\u00be/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¿',
+    hex: '\u00c2\u00bf',
+    regex: /\u00c2\u00bf/gu
+  },
+  utf8: {
+    chars: '¿',
+    hex: '\u00bf',
+    regex: /\u00bf/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã€',
+    hex: '\u00c3\u20ac',
+    regex: /\u00c3\u20ac/gu
+  },
+  utf8: {
+    chars: 'À',
+    hex: '\u00c0',
+    regex: /\u00c0/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã‚',
+    hex: '\u00c3\u201a',
+    regex: /\u00c3\u201a/gu
+  },
+  utf8: {
+    chars: 'Â',
+    hex: '\u00c2',
+    regex: /\u00c2/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãƒ',
+    hex: '\u00c3\u0192',
+    regex: /\u00c3\u0192/gu
+  },
+  utf8: {
+    chars: 'Ã',
+    hex: '\u00C3',
+    regex: /\u00C3/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã„',
+    hex: '\u00c3\u201e',
+    regex: /\u00c3\u201e/gu
+  },
+  utf8: {
+    chars: 'Ä',
+    hex: '\u00c4',
+    regex: /\u00c4/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã…',
+    hex: '\u00c3\u2026',
+    regex: /\u00c3\u2026/gu
+  },
+  utf8: {
+    chars: 'Å',
+    hex: '\u00C5',
+    regex: /\u00C5/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã†',
+    hex: '\u00c3\u2020',
+    regex: /\u00c3\u2020/gu
+  },
+  utf8: {
+    chars: 'Æ',
+    hex: '\u00c6',
+    regex: /\u00c6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã‡',
+    hex: '\u00c3\u2021',
+    regex: /\u00c3\u2021/gu
+  },
+  utf8: {
+    chars: 'Ç',
+    hex: '\u00c7',
+    regex: /\u00c7/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãˆ',
+    hex: '\u00c3\u02c6',
+    regex: /\u00c3\u02c6/gu
+  },
+  utf8: {
+    chars: 'È',
+    hex: '\u00c8',
+    regex: /\u00c8/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã‰',
+    hex: '\u00c3\u2030',
+    regex: /\u00c3\u2030/gu
+  },
+  utf8: {
+    chars: 'É',
+    hex: '\u00c9',
+    regex: /\u00c9/gu
+  }
+}, {
+  misrender: {
+    chars: 'ÃŠ',
+    hex: '\u00c3\u0160',
+    regex: /\u00c3\u0160/gu
+  },
+  utf8: {
+    chars: 'Ê',
+    hex: '\u00ca',
+    regex: /\u00ca/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã‹',
+    hex: '\u00c3\u2039',
+    regex: /\u00c3\u2039/gu
+  },
+  utf8: {
+    chars: 'Ë',
+    hex: '\u00cb',
+    regex: /\u00cb/gu
+  }
+}, {
+  misrender: {
+    chars: 'ÃŒ',
+    hex: '\u00c3\u0152',
+    regex: /\u00c3\u0152/gu
+  },
+  utf8: {
+    chars: 'Ì',
+    hex: '\u00cc',
+    regex: /\u00cc/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã',
+    hex: '\u00c3\u008d',
+    regex: /\u00c3\u008d/gu
+  },
+  utf8: {
+    chars: 'Í',
+    hex: '\u00cd',
+    regex: /\u00cd/gu
+  }
+}, {
+  misrender: {
+    chars: 'ÃŽ',
+    hex: '\u00c3\u017d',
+    regex: /\u00c3\u017d/gu
+  },
+  utf8: {
+    chars: 'Î',
+    hex: '\u00ce',
+    regex: /\u00ce/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã',
+    hex: '\u00c3\u008f',
+    regex: /\u00c3\u008f/gu
+  },
+  utf8: {
+    chars: 'Ï',
+    hex: '\u00cf',
+    regex: /\u00cf/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã',
+    hex: '\u00c3\u0090',
+    regex: /\u00c3\u0090/gu
+  },
+  utf8: {
+    chars: 'Ð',
+    hex: '\u00d0',
+    regex: /\u00d0/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã‘',
+    hex: '\u00c3\u2018',
+    regex: /\u00c3\u2018/gu
+  },
+  utf8: {
+    chars: 'Ñ',
+    hex: '\u00d1',
+    regex: /\u00d1/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã’',
+    hex: '\u00c3\u2019',
+    regex: /\u00c3\u2019/gu
+  },
+  utf8: {
+    chars: 'Ò',
+    hex: '\u00d2',
+    regex: /\u00d2/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã“',
+    hex: '\u00c3\u201c',
+    regex: /\u00c3\u201c/gu
+  },
+  utf8: {
+    chars: 'Ó',
+    hex: '\u00d3',
+    regex: /\u00d3/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã”',
+    hex: '\u00c3\u201d',
+    regex: /\u00c3\u201d/gu
+  },
+  utf8: {
+    chars: 'Ô',
+    hex: '\u00d4',
+    regex: /\u00d4/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã•',
+    hex: '\u00c3\u2022',
+    regex: /\u00c3\u2022/gu
+  },
+  utf8: {
+    chars: 'Õ',
+    hex: '\u00d5',
+    regex: /\u00d5/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã–',
+    hex: '\u00c3\u2013',
+    regex: /\u00c3\u2013/gu
+  },
+  utf8: {
+    chars: 'Ö',
+    hex: '\u00d6',
+    regex: /\u00d6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã—',
+    hex: '\u00c3\u2014',
+    regex: /\u00c3\u2014/gu
+  },
+  utf8: {
+    chars: '×',
+    hex: '\u00d7',
+    regex: /\u00d7/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã˜',
+    hex: '\u00c3\u02dc',
+    regex: /\u00c3\u02dc/gu
+  },
+  utf8: {
+    chars: 'Ø',
+    hex: '\u00d8',
+    regex: /\u00d8/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã™',
+    hex: '\u00c3\u2122',
+    regex: /\u00c3\u2122/gu
+  },
+  utf8: {
+    chars: 'Ù',
+    hex: '\u00d9',
+    regex: /\u00d9/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãš',
+    hex: '\u00c3\u0161',
+    regex: /\u00c3\u0161/gu
+  },
+  utf8: {
+    chars: 'Ú',
+    hex: '\u00da',
+    regex: /\u00da/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã›',
+    hex: '\u00c3\u203a',
+    regex: /\u00c3\u203a/gu
+  },
+  utf8: {
+    chars: 'Û',
+    hex: '\u00db',
+    regex: /\u00db/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãœ',
+    hex: '\u00c3\u0153',
+    regex: /\u00c3\u0153/gu
+  },
+  utf8: {
+    chars: 'Ü',
+    hex: '\u00dc',
+    regex: /\u00dc/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã',
+    hex: '\u00c3\u009d',
+    regex: /\u00c3\u009d/gu
+  },
+  utf8: {
+    chars: 'Ý',
+    hex: '\u00dd',
+    regex: /\u00dd/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãž',
+    hex: '\u00c3\u017e',
+    regex: /\u00c3\u017e/gu
+  },
+  utf8: {
+    chars: 'Þ',
+    hex: '\u00de',
+    regex: /\u00de/gu
+  }
+}, {
+  misrender: {
+    chars: 'ÃŸ',
+    hex: '\u00c3\u0178',
+    regex: /\u00c3\u0178/gu
+  },
+  utf8: {
+    chars: 'ß',
+    hex: '\u00df',
+    regex: /\u00df/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã ',
+    hex: '\u00c3\u00a0',
+    regex: /\u00c3\u00a0/gu
+  },
+  utf8: {
+    chars: 'à',
+    hex: '\u00e0',
+    regex: /\u00e0/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¡',
+    hex: '\u00c3\u00a1',
+    regex: /\u00c3\u00a1/gu
+  },
+  utf8: {
+    chars: 'á',
+    hex: '\u00e1',
+    regex: /\u00e1/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¢',
+    hex: '\u00c3\u00a2',
+    regex: /\u00c3\u00a2/gu
+  },
+  utf8: {
+    chars: 'â',
+    hex: '\u00e2',
+    regex: /\u00e2/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã£',
+    hex: '\u00c3\u00a3',
+    regex: /\u00c3\u00a3/gu
+  },
+  utf8: {
+    chars: 'ã',
+    hex: '\u00e3',
+    regex: /\u00e3/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¤',
+    hex: '\u00c3\u00a4',
+    regex: /\u00c3\u00a4/gu
+  },
+  utf8: {
+    chars: 'ä',
+    hex: '\u00e4',
+    regex: /\u00e4/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¥',
+    hex: '\u00c3\u00a5',
+    regex: /\u00c3\u00a5/gu
+  },
+  utf8: {
+    chars: 'å',
+    hex: '\u00e5',
+    regex: /\u00e5/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¦',
+    hex: '\u00c3\u00a6',
+    regex: /\u00c3\u00a6/gu
+  },
+  utf8: {
+    chars: 'æ',
+    hex: '\u00e6',
+    regex: /\u00e6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã§',
+    hex: '\u00c3\u00a7',
+    regex: /\u00c3\u00a7/gu
+  },
+  utf8: {
+    chars: 'ç',
+    hex: '\u00e7',
+    regex: /\u00e7/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¨',
+    hex: '\u00c3\u00a8',
+    regex: /\u00c3\u00a8/gu
+  },
+  utf8: {
+    chars: 'è',
+    hex: '\u00e8',
+    regex: /\u00e8/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã©',
+    hex: '\u00c3\u00a9',
+    regex: /\u00c3\u00a9/gu
+  },
+  utf8: {
+    chars: 'é',
+    hex: '\u00e9',
+    regex: /\u00e9/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãª',
+    hex: '\u00c3\u00aa',
+    regex: /\u00c3\u00aa/gu
+  },
+  utf8: {
+    chars: 'ê',
+    hex: '\u00ea',
+    regex: /\u00ea/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã«',
+    hex: '\u00c3\u00ab',
+    regex: /\u00c3\u00ab/gu
+  },
+  utf8: {
+    chars: 'ë',
+    hex: '\u00eb',
+    regex: /\u00eb/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¬',
+    hex: '\u00c3\u00ac',
+    regex: /\u00c3\u00ac/gu
+  },
+  utf8: {
+    chars: 'ì',
+    hex: '\u00ec',
+    regex: /\u00ec/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã­',
+    hex: '\u00c3\u00ad',
+    regex: /\u00c3\u00ad/gu
+  },
+  utf8: {
+    chars: 'í',
+    hex: '\u00ed',
+    regex: /\u00ed/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã®',
+    hex: '\u00c3\u00ae',
+    regex: /\u00c3\u00ae/gu
+  },
+  utf8: {
+    chars: 'î',
+    hex: '\u00ee',
+    regex: /\u00ee/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¯',
+    hex: '\u00c3\u00af',
+    regex: /\u00c3\u00af/gu
+  },
+  utf8: {
+    chars: 'ï',
+    hex: '\u00ef',
+    regex: /\u00ef/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã°',
+    hex: '\u00c3\u00b0',
+    regex: /\u00c3\u00b0/gu
+  },
+  utf8: {
+    chars: 'ð',
+    hex: '\u00f0',
+    regex: /\u00f0/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã±',
+    hex: '\u00c3\u00b1',
+    regex: /\u00c3\u00b1/gu
+  },
+  utf8: {
+    chars: 'ñ',
+    hex: '\u00f1',
+    regex: /\u00f1/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã²',
+    hex: '\u00c3\u00b2',
+    regex: /\u00c3\u00b2/gu
+  },
+  utf8: {
+    chars: 'ò',
+    hex: '\u00f2',
+    regex: /\u00f2/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã³',
+    hex: '\u00c3\u00b3',
+    regex: /\u00c3\u00b3/gu
+  },
+  utf8: {
+    chars: 'ó',
+    hex: '\u00f3',
+    regex: /\u00f3/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã´',
+    hex: '\u00c3\u00b4',
+    regex: /\u00c3\u00b4/gu
+  },
+  utf8: {
+    chars: 'ô',
+    hex: '\u00f4',
+    regex: /\u00f4/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãµ',
+    hex: '\u00c3\u00b5',
+    regex: /\u00c3\u00b5/gu
+  },
+  utf8: {
+    chars: 'õ',
+    hex: '\u00f5',
+    regex: /\u00f5/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¶',
+    hex: '\u00c3\u00b6',
+    regex: /\u00c3\u00b6/gu
+  },
+  utf8: {
+    chars: 'ö',
+    hex: '\u00f6',
+    regex: /\u00f6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã·',
+    hex: '\u00c3\u00b7',
+    regex: /\u00c3\u00b7/gu
+  },
+  utf8: {
+    chars: '÷',
+    hex: '\u00f7',
+    regex: /\u00f7/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¸',
+    hex: '\u00c3\u00b8',
+    regex: /\u00c3\u00b8/gu
+  },
+  utf8: {
+    chars: 'ø',
+    hex: '\u00f8',
+    regex: /\u00f8/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¹',
+    hex: '\u00c3\u00b9',
+    regex: /\u00c3\u00b9/gu
+  },
+  utf8: {
+    chars: 'ù',
+    hex: '\u00f9',
+    regex: /\u00f9/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãº',
+    hex: '\u00c3\u00ba',
+    regex: /\u00c3\u00ba/gu
+  },
+  utf8: {
+    chars: 'ú',
+    hex: '\u00fa',
+    regex: /\u00fa/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã»',
+    hex: '\u00c3\u00bb',
+    regex: /\u00c3\u00bb/gu
+  },
+  utf8: {
+    chars: 'û',
+    hex: '\u00fb',
+    regex: /\u00fb/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¼',
+    hex: '\u00c3\u00bc',
+    regex: /\u00c3\u00bc/gu
+  },
+  utf8: {
+    chars: 'ü',
+    hex: '\u00fc',
+    regex: /\u00fc/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã½',
+    hex: '\u00c3\u00bd',
+    regex: /\u00c3\u00bd/gu
+  },
+  utf8: {
+    chars: 'ý',
+    hex: '\u00fd',
+    regex: /\u00fd/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¾',
+    hex: '\u00c3\u00be',
+    regex: /\u00c3\u00be/gu
+  },
+  utf8: {
+    chars: 'þ',
+    hex: '\u00fe',
+    regex: /\u00fe/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¿',
+    hex: '\u00c3\u00bf',
+    regex: /\u00c3\u00bf/gu
+  },
+  utf8: {
+    chars: 'ÿ',
+    hex: '\u00ff',
+    regex: /\u00ff/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã€',
+    hex: '\u00c3\u20ac',
+    regex: /\u00c3\u20ac/gu
+  },
+  utf8: {
+    chars: 'À',
+    hex: '\u00c0',
+    regex: /\u00c0/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã‚',
+    hex: '\u00c3\u201a',
+    regex: /\u00c3\u201a/gu
+  },
+  utf8: {
+    chars: 'Â',
+    hex: '\u00c2',
+    regex: /\u00c2/gu
+  }
+}, {
+  misrender: {
+    chars: 'Æ’',
+    hex: '\u00c6\u2019',
+    regex: /\u00c6\u2019/gu
+  },
+  utf8: {
+    chars: 'ƒ',
+    hex: '\u0192',
+    regex: /\u0192/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã„',
+    hex: '\u00c3\u201e',
+    regex: /\u00c3\u201e/gu
+  },
+  utf8: {
+    chars: 'Ä',
+    hex: '\u00c4',
+    regex: /\u00c4/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã†',
+    hex: '\u00c3\u2020',
+    regex: /\u00c3\u2020/gu
+  },
+  utf8: {
+    chars: 'Æ',
+    hex: '\u00c6',
+    regex: /\u00c6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã‡',
+    hex: '\u00c3\u2021',
+    regex: /\u00c3\u2021/gu
+  },
+  utf8: {
+    chars: 'Ç',
+    hex: '\u00c7',
+    regex: /\u00c7/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ë†',
+    hex: '\u00cb\u2020',
+    regex: /\u00cb\u2020/gu
+  },
+  utf8: {
+    chars: 'ˆ',
+    hex: '\u02c6',
+    regex: /\u02c6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãˆ',
+    hex: '\u00c3\u02c6',
+    regex: /\u00c3\u02c6/gu
+  },
+  utf8: {
+    chars: 'È',
+    hex: '\u00c8',
+    regex: /\u00c8/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã‰',
+    hex: '\u00c3\u2030',
+    regex: /\u00c3\u2030/gu
+  },
+  utf8: {
+    chars: 'É',
+    hex: '\u00c9',
+    regex: /\u00c9/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å¾',
+    hex: '\u00c5\u00be',
+    regex: /\u00c5\u00be/gu
+  },
+  utf8: {
+    chars: 'ž',
+    hex: '\u017e',
+    regex: /\u017e/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã›',
+    hex: '\u00c3\u203a',
+    regex: /\u00c3\u203a/gu
+  },
+  utf8: {
+    chars: 'Û',
+    hex: '\u00db',
+    regex: /\u00db/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å“',
+    hex: '\u00c5\u201c',
+    regex: /\u00c5\u201c/gu
+  },
+  utf8: {
+    chars: 'œ',
+    hex: '\u0153',
+    regex: /\u0153/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãœ',
+    hex: '\u00c3\u0153',
+    regex: /\u00c3\u0153/gu
+  },
+  utf8: {
+    chars: 'Ü',
+    hex: '\u00dc',
+    regex: /\u00dc/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãž',
+    hex: '\u00c3\u017e',
+    regex: /\u00c3\u017e/gu
+  },
+  utf8: {
+    chars: 'Þ',
+    hex: '\u00de',
+    regex: /\u00de/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å¸',
+    hex: '\u00c5\u00b8',
+    regex: /\u00c5\u00b8/gu
+  },
+  utf8: {
+    chars: 'Ÿ',
+    hex: '\u0178',
+    regex: /\u0178/gu
+  }
+}, {
+  misrender: {
+    chars: 'ÃŸ',
+    hex: '\u00c3\u0178',
+    regex: /\u00c3\u0178/gu
+  },
+  utf8: {
+    chars: 'ß',
+    hex: '\u00df',
+    regex: /\u00df/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â®',
+    hex: '\u00c2\u00ae',
+    regex: /\u00c2\u00ae/gu
+  },
+  utf8: {
+    chars: '®',
+    hex: '\u00ae',
+    regex: /\u00ae/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã®',
+    hex: '\u00c3\u00ae',
+    regex: /\u00c3\u00ae/gu
+  },
+  utf8: {
+    chars: 'î',
+    hex: '\u00ee',
+    regex: /\u00ee/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¯',
+    hex: '\u00c2\u00af',
+    regex: /\u00c2\u00af/gu
+  },
+  utf8: {
+    chars: '¯',
+    hex: '\u00af',
+    regex: /\u00af/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¯',
+    hex: '\u00c3\u00af',
+    regex: /\u00c3\u00af/gu
+  },
+  utf8: {
+    chars: 'ï',
+    hex: '\u00ef',
+    regex: /\u00ef/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â°',
+    hex: '\u00c2\u00b0',
+    regex: /\u00c2\u00b0/gu
+  },
+  utf8: {
+    chars: '°',
+    hex: '\u00b0',
+    regex: /\u00b0/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã°',
+    hex: '\u00c3\u00b0',
+    regex: /\u00c3\u00b0/gu
+  },
+  utf8: {
+    chars: 'ð',
+    hex: '\u00f0',
+    regex: /\u00f0/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â±',
+    hex: '\u00c2\u00b1',
+    regex: /\u00c2\u00b1/gu
+  },
+  utf8: {
+    chars: '±',
+    hex: '\u00b1',
+    regex: /\u00b1/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã±',
+    hex: '\u00c3\u00b1',
+    regex: /\u00c3\u00b1/gu
+  },
+  utf8: {
+    chars: 'ñ',
+    hex: '\u00f1',
+    regex: /\u00f1/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¡',
+    hex: '\u00c2\u00a1',
+    regex: /\u00c2\u00a1/gu
+  },
+  utf8: {
+    chars: '¡',
+    hex: '\u00a1',
+    regex: /\u00a1/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¡',
+    hex: '\u00c3\u00a1',
+    regex: /\u00c3\u00a1/gu
+  },
+  utf8: {
+    chars: 'á',
+    hex: '\u00e1',
+    regex: /\u00e1/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¢',
+    hex: '\u00c2\u00a2',
+    regex: /\u00c2\u00a2/gu
+  },
+  utf8: {
+    chars: '¢',
+    hex: '\u00a2',
+    regex: /\u00a2/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¢',
+    hex: '\u00c3\u00a2',
+    regex: /\u00c3\u00a2/gu
+  },
+  utf8: {
+    chars: 'â',
+    hex: '\u00e2',
+    regex: /\u00e2/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â£',
+    hex: '\u00c2\u00a3',
+    regex: /\u00c2\u00a3/gu
+  },
+  utf8: {
+    chars: '£',
+    hex: '\u00a3',
+    regex: /\u00a3/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã£',
+    hex: '\u00c3\u00a3',
+    regex: /\u00c3\u00a3/gu
+  },
+  utf8: {
+    chars: 'ã',
+    hex: '\u00e3',
+    regex: /\u00e3/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¤',
+    hex: '\u00c2\u00a4',
+    regex: /\u00c2\u00a4/gu
+  },
+  utf8: {
+    chars: '¤',
+    hex: '\u00a4',
+    regex: /\u00a4/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¤',
+    hex: '\u00c3\u00a4',
+    regex: /\u00c3\u00a4/gu
+  },
+  utf8: {
+    chars: 'ä',
+    hex: '\u00e4',
+    regex: /\u00e4/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¥',
+    hex: '\u00c2\u00a5',
+    regex: /\u00c2\u00a5/gu
+  },
+  utf8: {
+    chars: '¥',
+    hex: '\u00a5',
+    regex: /\u00a5/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¥',
+    hex: '\u00c3\u00a5',
+    regex: /\u00c3\u00a5/gu
+  },
+  utf8: {
+    chars: 'å',
+    hex: '\u00e5',
+    regex: /\u00e5/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¦',
+    hex: '\u00c2\u00a6',
+    regex: /\u00c2\u00a6/gu
+  },
+  utf8: {
+    chars: '¦',
+    hex: '\u00a6',
+    regex: /\u00a6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¦',
+    hex: '\u00c3\u00a6',
+    regex: /\u00c3\u00a6/gu
+  },
+  utf8: {
+    chars: 'æ',
+    hex: '\u00e6',
+    regex: /\u00e6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â§',
+    hex: '\u00c2\u00a7',
+    regex: /\u00c2\u00a7/gu
+  },
+  utf8: {
+    chars: '§',
+    hex: '\u00a7',
+    regex: /\u00a7/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã§',
+    hex: '\u00c3\u00a7',
+    regex: /\u00c3\u00a7/gu
+  },
+  utf8: {
+    chars: 'ç',
+    hex: '\u00e7',
+    regex: /\u00e7/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¨',
+    hex: '\u00c2\u00a8',
+    regex: /\u00c2\u00a8/gu
+  },
+  utf8: {
+    chars: '¨',
+    hex: '\u00a8',
+    regex: /\u00a8/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¨',
+    hex: '\u00c3\u00a8',
+    regex: /\u00c3\u00a8/gu
+  },
+  utf8: {
+    chars: 'è',
+    hex: '\u00e8',
+    regex: /\u00e8/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã™',
+    hex: '\u00c3\u2122',
+    regex: /\u00c3\u2122/gu
+  },
+  utf8: {
+    chars: 'Ù',
+    hex: '\u00d9',
+    regex: /\u00d9/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å¡',
+    hex: '\u00c5\u00a1',
+    regex: /\u00c5\u00a1/gu
+  },
+  utf8: {
+    chars: 'š',
+    hex: '\u0161',
+    regex: /\u0161/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãš',
+    hex: '\u00c3\u0161',
+    regex: /\u00c3\u0161/gu
+  },
+  utf8: {
+    chars: 'Ú',
+    hex: '\u00da',
+    regex: /\u00da/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â©',
+    hex: '\u00c2\u00a9',
+    regex: /\u00c2\u00a9/gu
+  },
+  utf8: {
+    chars: '©',
+    hex: '\u00a9',
+    regex: /\u00a9/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã©',
+    hex: '\u00c3\u00a9',
+    regex: /\u00c3\u00a9/gu
+  },
+  utf8: {
+    chars: 'é',
+    hex: '\u00e9',
+    regex: /\u00e9/gu
+  }
+}, {
+  misrender: {
+    chars: 'Âª',
+    hex: '\u00c2\u00aa',
+    regex: /\u00c2\u00aa/gu
+  },
+  utf8: {
+    chars: 'ª',
+    hex: '\u00aa',
+    regex: /\u00aa/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãª',
+    hex: '\u00c3\u00aa',
+    regex: /\u00c3\u00aa/gu
+  },
+  utf8: {
+    chars: 'ê',
+    hex: '\u00ea',
+    regex: /\u00ea/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â«',
+    hex: '\u00c2\u00ab',
+    regex: /\u00c2\u00ab/gu
+  },
+  utf8: {
+    chars: '«',
+    hex: '\u00ab',
+    regex: /\u00ab/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã«',
+    hex: '\u00c3\u00ab',
+    regex: /\u00c3\u00ab/gu
+  },
+  utf8: {
+    chars: 'ë',
+    hex: '\u00eb',
+    regex: /\u00eb/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¬',
+    hex: '\u00c2\u00ac',
+    regex: /\u00c2\u00ac/gu
+  },
+  utf8: {
+    chars: '¬',
+    hex: '\u00ac',
+    regex: /\u00ac/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¬',
+    hex: '\u00c3\u00ac',
+    regex: /\u00c3\u00ac/gu
+  },
+  utf8: {
+    chars: 'ì',
+    hex: '\u00ec',
+    regex: /\u00ec/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â²',
+    hex: '\u00c2\u00b2',
+    regex: /\u00c2\u00b2/gu
+  },
+  utf8: {
+    chars: '²',
+    hex: '\u00b2',
+    regex: /\u00b2/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã²',
+    hex: '\u00c3\u00b2',
+    regex: /\u00c3\u00b2/gu
+  },
+  utf8: {
+    chars: 'ò',
+    hex: '\u00f2',
+    regex: /\u00f2/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â³',
+    hex: '\u00c2\u00b3',
+    regex: /\u00c2\u00b3/gu
+  },
+  utf8: {
+    chars: '³',
+    hex: '\u00b3',
+    regex: /\u00b3/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã³',
+    hex: '\u00c3\u00b3',
+    regex: /\u00c3\u00b3/gu
+  },
+  utf8: {
+    chars: 'ó',
+    hex: '\u00f3',
+    regex: /\u00f3/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â´',
+    hex: '\u00c2\u00b4',
+    regex: /\u00c2\u00b4/gu
+  },
+  utf8: {
+    chars: '´',
+    hex: '\u00b4',
+    regex: /\u00b4/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã´',
+    hex: '\u00c3\u00b4',
+    regex: /\u00c3\u00b4/gu
+  },
+  utf8: {
+    chars: 'ô',
+    hex: '\u00f4',
+    regex: /\u00f4/gu
+  }
+}, {
+  misrender: {
+    chars: 'Âµ',
+    hex: '\u00c2\u00b5',
+    regex: /\u00c2\u00b5/gu
+  },
+  utf8: {
+    chars: 'µ',
+    hex: '\u00b5',
+    regex: /\u00b5/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãµ',
+    hex: '\u00c3\u00b5',
+    regex: /\u00c3\u00b5/gu
+  },
+  utf8: {
+    chars: 'õ',
+    hex: '\u00f5',
+    regex: /\u00f5/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¶',
+    hex: '\u00c2\u00b6',
+    regex: /\u00c2\u00b6/gu
+  },
+  utf8: {
+    chars: '¶',
+    hex: '\u00b6',
+    regex: /\u00b6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¶',
+    hex: '\u00c3\u00b6',
+    regex: /\u00c3\u00b6/gu
+  },
+  utf8: {
+    chars: 'ö',
+    hex: '\u00f6',
+    regex: /\u00f6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â·',
+    hex: '\u00c2\u00b7',
+    regex: /\u00c2\u00b7/gu
+  },
+  utf8: {
+    chars: '·',
+    hex: '\u00b7',
+    regex: /\u00b7/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã·',
+    hex: '\u00c3\u00b7',
+    regex: /\u00c3\u00b7/gu
+  },
+  utf8: {
+    chars: '÷',
+    hex: '\u00f7',
+    regex: /\u00f7/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¸',
+    hex: '\u00c2\u00b8',
+    regex: /\u00c2\u00b8/gu
+  },
+  utf8: {
+    chars: '¸',
+    hex: '\u00b8',
+    regex: /\u00b8/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¸',
+    hex: '\u00c3\u00b8',
+    regex: /\u00c3\u00b8/gu
+  },
+  utf8: {
+    chars: 'ø',
+    hex: '\u00f8',
+    regex: /\u00f8/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¹',
+    hex: '\u00c2\u00b9',
+    regex: /\u00c2\u00b9/gu
+  },
+  utf8: {
+    chars: '¹',
+    hex: '\u00b9',
+    regex: /\u00b9/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¹',
+    hex: '\u00c3\u00b9',
+    regex: /\u00c3\u00b9/gu
+  },
+  utf8: {
+    chars: 'ù',
+    hex: '\u00f9',
+    regex: /\u00f9/gu
+  }
+}, {
+  misrender: {
+    chars: 'Âº',
+    hex: '\u00c2\u00ba',
+    regex: /\u00c2\u00ba/gu
+  },
+  utf8: {
+    chars: 'º',
+    hex: '\u00ba',
+    regex: /\u00ba/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ãº',
+    hex: '\u00c3\u00ba',
+    regex: /\u00c3\u00ba/gu
+  },
+  utf8: {
+    chars: 'ú',
+    hex: '\u00fa',
+    regex: /\u00fa/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â»',
+    hex: '\u00c2\u00bb',
+    regex: /\u00c2\u00bb/gu
+  },
+  utf8: {
+    chars: '»',
+    hex: '\u00bb',
+    regex: /\u00bb/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã»',
+    hex: '\u00c3\u00bb',
+    regex: /\u00c3\u00bb/gu
+  },
+  utf8: {
+    chars: 'û',
+    hex: '\u00fb',
+    regex: /\u00fb/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¼',
+    hex: '\u00c2\u00bc',
+    regex: /\u00c2\u00bc/gu
+  },
+  utf8: {
+    chars: '¼',
+    hex: '\u00bc',
+    regex: /\u00bc/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¼',
+    hex: '\u00c3\u00bc',
+    regex: /\u00c3\u00bc/gu
+  },
+  utf8: {
+    chars: 'ü',
+    hex: '\u00fc',
+    regex: /\u00fc/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â½',
+    hex: '\u00c2\u00bd',
+    regex: /\u00c2\u00bd/gu
+  },
+  utf8: {
+    chars: '½',
+    hex: '\u00bd',
+    regex: /\u00bd/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã½',
+    hex: '\u00c3\u00bd',
+    regex: /\u00c3\u00bd/gu
+  },
+  utf8: {
+    chars: 'ý',
+    hex: '\u00fd',
+    regex: /\u00fd/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¾',
+    hex: '\u00c2\u00be',
+    regex: /\u00c2\u00be/gu
+  },
+  utf8: {
+    chars: '¾',
+    hex: '\u00be',
+    regex: /\u00be/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¾',
+    hex: '\u00c3\u00be',
+    regex: /\u00c3\u00be/gu
+  },
+  utf8: {
+    chars: 'þ',
+    hex: '\u00fe',
+    regex: /\u00fe/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã’',
+    hex: '\u00c3\u2019',
+    regex: /\u00c3\u2019/gu
+  },
+  utf8: {
+    chars: 'Ò',
+    hex: '\u00d2',
+    regex: /\u00d2/gu
+  }
+}, {
+  misrender: {
+    chars: 'Â¿',
+    hex: '\u00c2\u00bf',
+    regex: /\u00c2\u00bf/gu
+  },
+  utf8: {
+    chars: '¿',
+    hex: '\u00bf',
+    regex: /\u00bf/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã¿',
+    hex: '\u00c3\u00bf',
+    regex: /\u00c3\u00bf/gu
+  },
+  utf8: {
+    chars: 'ÿ',
+    hex: '\u00ff',
+    regex: /\u00ff/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã—',
+    hex: '\u00c3\u2014',
+    regex: /\u00c3\u2014/gu
+  },
+  utf8: {
+    chars: '×',
+    hex: '\u00d7',
+    regex: /\u00d7/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ëœ',
+    hex: '\u00cb\u0153',
+    regex: /\u00cb\u0153/gu
+  },
+  utf8: {
+    chars: '˜',
+    hex: '\u02dc',
+    regex: /\u02dc/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã˜',
+    hex: '\u00c3\u02dc',
+    regex: /\u00c3\u02dc/gu
+  },
+  utf8: {
+    chars: 'Ø',
+    hex: '\u00d8',
+    regex: /\u00d8/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã“',
+    hex: '\u00c3\u201c',
+    regex: /\u00c3\u201c/gu
+  },
+  utf8: {
+    chars: 'Ó',
+    hex: '\u00d3',
+    regex: /\u00d3/gu
+  }
+}, {
+  misrender: {
+    chars: 'â€',
+    hex: '\u00e2\u20ac',
+    regex: /\u00e2\u20ac/gu
+  },
+  utf8: {
+    chars: '”',
+    hex: '\u201d',
+    regex: /\u201d/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã”',
+    hex: '\u00c3\u201d',
+    regex: /\u00c3\u201d/gu
+  },
+  utf8: {
+    chars: 'Ô',
+    hex: '\u00d4',
+    regex: /\u00d4/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã•',
+    hex: '\u00c3\u2022',
+    regex: /\u00c3\u2022/gu
+  },
+  utf8: {
+    chars: 'Õ',
+    hex: '\u00d5',
+    regex: /\u00d5/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã–',
+    hex: '\u00c3\u2013',
+    regex: /\u00c3\u2013/gu
+  },
+  utf8: {
+    chars: 'Ö',
+    hex: '\u00d6',
+    regex: /\u00d6/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã‹',
+    hex: '\u00c3\u2039',
+    regex: /\u00c3\u2039/gu
+  },
+  utf8: {
+    chars: 'Ë',
+    hex: '\u00cb',
+    regex: /\u00cb/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å’',
+    hex: '\u00c5\u2019',
+    regex: /\u00c5\u2019/gu
+  },
+  utf8: {
+    chars: 'Œ',
+    hex: '\u0152',
+    regex: /\u0152/gu
+  }
+}, {
+  misrender: {
+    chars: 'ÃŒ',
+    hex: '\u00c3\u0152',
+    regex: /\u00c3\u0152/gu
+  },
+  utf8: {
+    chars: 'Ì',
+    hex: '\u00cc',
+    regex: /\u00cc/gu
+  }
+}, {
+  misrender: {
+    chars: 'Å½',
+    hex: '\u00c5\u00bd',
+    regex: /\u00c5\u00bd/gu
+  },
+  utf8: {
+    chars: 'Ž',
+    hex: '\u017d',
+    regex: /\u017d/gu
+  }
+}, {
+  misrender: {
+    chars: 'ÃŽ',
+    hex: '\u00c3\u017d',
+    regex: /\u00c3\u017d/gu
+  },
+  utf8: {
+    chars: 'Î',
+    hex: '\u00ce',
+    regex: /\u00ce/gu
+  }
+}, {
+  misrender: {
+    chars: 'Ã‘',
+    hex: '\u00c3\u2018',
+    regex: /\u00c3\u2018/gu
+  },
+  utf8: {
+    chars: 'Ñ',
+    hex: '\u00d1',
+    regex: /\u00d1/gu
+  }
+}, {
+  misrender: {
+    chars: 'ÃŠ',
+    hex: '\u00c3\u0160',
+    regex: /\u00c3\u0160/gu
+  },
+  utf8: {
+    chars: 'Ê',
+    hex: '\u00ca',
+    regex: /\u00ca/gu
+  }
+} // {
+//   misrender: {
+//     chars: 'Ã',
+//     hex: '\u00c3',
+//     regex: /\u00c3/gu,
+//   },
+//   utf8: {
+//     chars: 'Â',
+//     hex: '\u00C2',
+//     regex: /\u00C2/gu,
+//   },
+// },
+// {
+//   misrender: {
+//     chars: 'Â',
+//     hex: '\u00c2',
+//     regex: /\u00c2/gu,
+//   },
+//   utf8: {
+//     chars: '',
+//     hex: '',
+//   },
+// },
+// {
+//   misrender: {
+//     chars: 'Å',
+//     hex: '\u00c5',
+//     regex: /\u00c5/gu,
+//   },
+//   utf8: {
+//     chars: 'Š',
+//     hex: '\u0160',
+//     regex: /\u0160/gu,
+//   },
+// },
+];

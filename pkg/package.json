@@ -1,7 +1,7 @@
 {
   "name": "utfu",
-  "description": "Attempts to fix busted character encodings carried over from legacy text formats.",
-  "version": "0.2.0",
+  "description": "Replaces busted characters carried over from legacy text encodings with the proper UTF-8 character.",
+  "version": "0.2.1",
   "license": "MIT",
   "files": [
     "dist-*/",
@@ -9,8 +9,22 @@
   ],
   "pika": true,
   "sideEffects": false,
+  "keywords": [
+    "utf",
+    "utf-8",
+    "unicode",
+    "windows-1252",
+    "fix",
+    "replace",
+    "convert",
+    "characters"
+  ],
   "repository": "https://gitlab.com/selfagency/utfu.git",
-  "dependencies": {},
+  "dependencies": {
+    "escape-unicode": "^0.2.0",
+    "he": "^1.2.0",
+    "windows-1252": "^1.0.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
@@ -29,7 +43,6 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "iconv": "^3.0.0",
     "jest": "^25.4.0",
     "prettier": "^2.0.5",
     "typescript": "^3.8.3"
