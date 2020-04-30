@@ -63,7 +63,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "escape-unicode": "^0.2.0",
     "he": "^1.2.0",
     "windows-1252": "^1.0.0"
   }

@@ -9,7 +9,7 @@
   </a>
 </p>
 
-> Replaces busted characters carried over from legacy text encodings with the proper UTF-8 character.
+> Replaces busted characters carried over from legacy text encodings with the proper UTF-8 characters.
 
 ## Install
 
@@ -56,6 +56,10 @@ yarn run test
 - Twitter: [@selfagency_llc](https://twitter.com/selfagency_llc)
 - GitLab: [@selfagency](https://gitlab.com/selfagency)
 - LinkedIn: [@selfagency](https://linkedin.com/in/selfagency)
+
+## Acknowledgements
+
+Gracious thanks to [Mathias Bynens](https://mathiasbynens.be/), upon whose [he](https://github.com/mathiasbynens/he) and [windows-1252](https://github.com/mathiasbynens/windows-1252) packages this project depends.
 
 ## 🤝 Contributing
 
