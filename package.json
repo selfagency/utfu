@@ -11,7 +11,7 @@
     "convert",
     "characters"
   ],
-  "version": "0.2.6",
+  "version": "0.3.0",
   "repository": "https://gitlab.com/selfagency/utfu.git",
   "author": "Daniel Sieradski <daniel@self.agency>",
   "license": "MIT",
