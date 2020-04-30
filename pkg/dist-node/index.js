@@ -4,7 +4,7 @@ const he = require('he');
 
 const win = require('windows-1252');
 
-const mappings = require('./mappings');
+const mappings = require('./mappings.js');
 
 const hex = str => {
   if (typeof str !== 'string') throw new Error('utfu requires a string to process');
