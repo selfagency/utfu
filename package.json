@@ -1,6 +1,26 @@
 {
   "name": "utfu",
+  "description": "Replaces busted characters carried over from legacy text encodings with the proper UTF-8 characters.",
+  "keywords": [
+    "utf",
+    "utf-8",
+    "unicode",
+    "windows-1252",
+    "fix",
+    "replace",
+    "convert",
+    "characters"
+  ],
   "version": "0.2.5",
+  "repository": "https://gitlab.com/selfagency/utfu.git",
+  "author": "Daniel Sieradski <daniel@self.agency>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "pika build",
+    "test": "jest --coverage",
+    "pu": "npm version patch; pika build; cd pkg; npm pu;"
+  },
   "@pika/pack": {
     "pipeline": [
       [
@@ -15,34 +35,17 @@
         "@pika/plugin-build-node"
       ],
       [
-        "@pika/plugin-bundle-node"
-      ],
-      [
         "@pika/plugin-build-web"
-      ],
-      [
-        "@pika/plugin-bundle-web"
       ],
       [
         "@pika/plugin-build-types"
       ]
     ]
   },
-  "description": "Replaces busted characters carried over from legacy text encodings with the proper UTF-8 characters.",
-  "keywords": [
-    "utf",
-    "utf-8",
-    "unicode",
-    "windows-1252",
-    "fix",
-    "replace",
-    "convert",
-    "characters"
-  ],
-  "repository": "https://gitlab.com/selfagency/utfu.git",
-  "author": "Daniel Sieradski <daniel@self.agency>",
-  "license": "MIT",
-  "private": false,
+  "dependencies": {
+    "he": "^1.2.0",
+    "windows-1252": "^1.0.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.6",
@@ -68,12 +71,5 @@
     "pika-plugin-minify": "^0.1.0",
     "prettier": "^2.0.5",
     "typescript": "^3.8.3"
-  },
-  "scripts": {
-    "test": "jest --coverage"
-  },
-  "dependencies": {
-    "he": "^1.2.0",
-    "windows-1252": "^1.0.0"
   }
 }
