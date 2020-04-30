@@ -1,7 +1,7 @@
 <h1 align="center">üŧ⨍û ➞ utfu</h1>
 <p>
   <a href="#">
-    <img alt="Version" src="https://img.shields.io/badge/version-0.2.4-blue.svg?cacheSeconds=2592000" />
+    <img alt="Version" src="https://img.shields.io/badge/version-0.2.5-blue.svg?cacheSeconds=2592000" />
   </a>
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
