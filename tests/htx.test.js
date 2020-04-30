@@ -1,7 +1,7 @@
 import he from 'he'
 
 import { htx } from '../src/index.js'
-import mappings from '../src/mappings'
+import mappings from '../src/mappings.js'
 
 mappings.forEach(mapping => {
   const str = mapping.misrender.chars
