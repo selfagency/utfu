@@ -11,7 +11,7 @@
   </a>
 </p>
 
-> Replaces busted characters carried over from legacy text encodings with the proper UTF-8 characters.
+Replaces busted characters carried over from legacy text encodings with the proper UTF-8 characters.
 
 ## Install
 
@@ -25,29 +25,35 @@ Say you've got a string that looks like this:
 
 `Thereâ€™s no way Iâ€™m paying â‚¬30 for that!`
 
-Pass it to either method, `hex`, `txt`, or `htx` and you'll hopefully get back:
+Pass it to either method, `hex`, `htx`, or `txt`, and you'll hopefully get back:
 
 `There’s no way I’m paying €30 for that!`
 
-`hex` substitutes unicode hex values (ie., `\u20ac`), which is useful in some contexts. `txt` substitutes the actual character (ie., `€`). And `htx` substitutes the HTML escape sequence (ie., `&#x20AC;`). See chart [here](https://www.i18nqa.com/debug/utf8-debug.html) for mappings.
+- `hex` substitutes unicode hex values (ie., `\u20ac`)
+- `htx` substitutes the HTML escape sequence (ie., `&#x20AC;`)
+- `txt` substitutes the actual character (ie., `€`)
+
+- See substitution chart [here](https://www.i18nqa.com/debug/utf8-debug.html) for mappings, more or less
 
 ```javascript
-import { hex, txt, htx } from 'utfu'
+import { hex, htx, txt } from 'utfu'
 
-const dirtyText = 'On a certain level, it�s like shouting �fire� in a crowded theater.'
+const dirty = 'On a certain level, it�s like shouting �fire� in a crowded theater.'
 
-const cleanText = hex(dirtyText) || txt(dirtyText)
+const cleanHex = hex(dirty)
+// --> 'On a certain level, it\u2019s like shouting \u201Cfire\u201D in a crowded theater.'
 
-// --> 'On a certain level, it’s like shouting “fire” in a crowded theater.'
-
-const cleanHTML = htx(dirtyText)
+const cleanHTML = htx(dirty)
 // --> 'On a certain level, it&#x2019;s like shouting &#x201C;fire&#x201D; in a crowded theater.'
+
+const cleanTxt = txt(dirty)
+// --> 'On a certain level, it’s like shouting “fire” in a crowded theater.'
 ```
 
 ## Run tests
 
 ```sh
-yarn run test
+yarn test
 ```
 
 ## Author
@@ -57,7 +63,6 @@ yarn run test
 - Website: [self.agency](https://self.agency)
 - Twitter: [@selfagency_llc](https://twitter.com/selfagency_llc)
 - GitLab: [@selfagency](https://gitlab.com/selfagency)
-- LinkedIn: [@selfagency](https://linkedin.com/in/selfagency)
 
 ## Acknowledgements
 
