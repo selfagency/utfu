@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to utfu 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1.8-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-0.2.1-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
@@ -9,7 +9,7 @@
   </a>
 </p>
 
-> Attempts to fix busted character encodings carried over from legacy text formats. This is a work-in-progress and not yet ready for production use.
+> Replaces busted characters carried over from legacy text encodings with the proper UTF-8 character.
 
 ## Install
 
@@ -19,15 +19,26 @@ yarn add utfu || npm install utfu
 
 ## Usage
 
-Pass a string to either method, `hex` or `txt`. The former tries to do a regex search and replace for unicode chars. The latter tries to do a search and replace for characters in their typical misrendering (see chart [here](https://www.i18nqa.com/debug/utf8-debug.html)).
+Say you've got a string that looks like this:
+
+`There's no way I'm paying â‚¬30 for that!`
+
+Pass it to either method, `hex`, `txt`, or `htx` and you'll hopefully get back:
+
+`There's no way I'm paying €30 for that!`
+
+`hex` substitutes unicode hex values (ie., `\u20ac`), which is useful in some contexts. `txt` substitutes the actual character (ie., `€`). And `htx` substitutes the HTML escape sequence (ie., `&#x20AC;`). See chart [here](https://www.i18nqa.com/debug/utf8-debug.html) for mappings.
 
 ```javascript
-import utfu from 'utfu'
+import { hex, txt, htx } from 'utfu'
 
 const dirtyText = 'On a certain level, it�s like shouting �fire� in a crowded theater.'
 
-const cleanText = utfu.hex(dirtyText) || utfu.txt(dirtyText)
+const cleanText = hex(dirtyText) || txt(dirtyText)
 
+// --> 'On a certain level, it’s like shouting “fire” in a crowded theater.'
+
+const cleanHTML = htx(dirtyText)
 // --> 'On a certain level, it’s like shouting “fire” in a crowded theater.'
 ```
 
