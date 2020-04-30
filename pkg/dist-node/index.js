@@ -1,10 +1,13 @@
 'use strict';
 
-const he = require('he');
+Object.defineProperty(exports, '__esModule', { value: true });
 
-const win = require('windows-1252');
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-const mappings = [{
+var he = _interopDefault(require('he'));
+var win = _interopDefault(require('windows-1252'));
+
+var mappings = [{
   misrender: {
     chars: 'â‚¬',
     hex: '\u00e2\u201a\u00ac',
@@ -2620,9 +2623,7 @@ const htx = str => {
   return str;
 };
 
-module.exports = {
-  hex,
-  txt,
-  htx
-};
+exports.hex = hex;
+exports.htx = htx;
+exports.txt = txt;
 //# sourceMappingURL=index.js.map
