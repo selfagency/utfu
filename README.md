@@ -1,15 +1,6 @@
-<h1 align="center">üŧ⨍û ➞ utfu</h1>
-<p>
-  <a href="#">
-    <img alt="Version" src="https://img.shields.io/badge/version-0.2.6-blue.svg?cacheSeconds=2592000" />
-  </a>
-  <a href="#" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  </a>
-  <a href="https://twitter.com/selfagency_llc" target="_blank">
-    <img alt="Twitter: selfagency\_llc" src="https://img.shields.io/twitter/follow/selfagency_llc.svg?style=social" />
-  </a>
-</p>
+# üŧ⨍û ➞ utfu
+
+[![npm](https://img.shields.io/npm/dt/utfu.svg)](https://www.npmjs.com/package/utfu) [![npm](https://img.shields.io/npm/v/utfu.svg)](https://www.npmjs.com/package/utfu) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Twitter: @selfagency_llc](https://img.shields.io/twitter/follow/selfagency_llc.svg?style=social)](https://twitter.com/selfagency_llc)
 
 Replaces busted characters carried over from legacy text encodings with the proper UTF-8 characters.
 
@@ -68,14 +59,10 @@ yarn test
 
 Gracious thanks to [Mathias Bynens](https://mathiasbynens.be/), upon whose [he](https://github.com/mathiasbynens/he) and [windows-1252](https://github.com/mathiasbynens/windows-1252) packages this project depends.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://gitlab.com/selfagency/utfu/issues).
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
-
----
-
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
