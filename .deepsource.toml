@@ -1,0 +1,22 @@
+version = 1
+
+test_patterns = ["tests/**"]
+
+exclude_patterns = [
+    "node_modules/**",
+    ".git",
+    ".vscode",
+    "coverage"
+]
+
+[[analyzers]]
+name = "javascript"
+enabled = true
+
+  [analyzers.meta]
+  environment = [
+    "nodejs",
+    "browser",
+    "jest"
+  ]
+  style_guide = "standard"
