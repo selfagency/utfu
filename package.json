@@ -1,5 +1,7 @@
 {
   "name": "utfu",
+  "version": "0.3.1",
+  "private": false,
   "description": "Replaces busted characters carried over from legacy text encodings with the proper UTF-8 characters.",
   "keywords": [
     "utf",
@@ -11,65 +13,27 @@
     "convert",
     "characters"
   ],
-  "version": "0.3.1",
   "repository": "https://gitlab.com/selfagency/utfu.git",
-  "author": "Daniel Sieradski <daniel@self.agency>",
   "license": "MIT",
-  "private": false,
+  "author": "Daniel Sieradski <daniel@self.agency>",
+  "type": "module",
   "scripts": {
-    "build": "pika build",
-    "test": "jest && codecov",
-    "pu": "npm version patch; pika build; cd pkg; npm pu;"
-  },
-  "@pika/pack": {
-    "pipeline": [
-      [
-        "@pika/plugin-standard-pkg",
-        {
-          "exclude": [
-            "tests/**/*"
-          ]
-        }
-      ],
-      [
-        "@pika/plugin-build-node"
-      ],
-      [
-        "@pika/plugin-build-web"
-      ],
-      [
-        "@pika/plugin-build-types"
-      ]
-    ]
-  },
-  "dependencies": {
-    "he": "^1.2.0",
-    "windows-1252": "^1.0.0"
+    "build": "tsup src/index.ts --format cjs,esm --dts --out-dir dist",
+    "postbuild": "node ./scripts/write-dist-package.js",
+    "prepare": "npm run build",
+    "test": "vitest"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.8",
-    "@babel/preset-env": "^7.13.8",
-    "@pika/pack": "^0.5.0",
-    "@pika/plugin-build-node": "^0.9.2",
-    "@pika/plugin-build-types": "^0.9.2",
-    "@pika/plugin-build-web": "^0.9.2",
-    "@pika/plugin-bundle-node": "^0.9.2",
-    "@pika/plugin-bundle-web": "^0.9.2",
-    "@pika/plugin-standard-pkg": "^0.9.2",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.6.3",
-    "babel-loader": "^8.2.2",
-    "eslint": "^7.21.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^5.0.0",
-    "jest": "^26.6.3",
-    "pika-plugin-minify": "^0.1.0",
-    "prettier": "^2.2.1",
-    "typescript": "^4.2.2"
+    "@types/he": "^1.2.3",
+    "@types/node": "^25.3.0",
+    "esbuild": "^0.27.3",
+    "he": "^1.2.0",
+    "oxfmt": "^0.34.0",
+    "oxlint": "^1.49.0",
+    "oxlint-tsgolint": "^0.14.2",
+    "tsup": "8.5.1",
+    "typescript": "5.9.3",
+    "vitest": "4.0.18",
+    "windows-1252": "3.0.4"
   }
 }
