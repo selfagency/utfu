@@ -7,13 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      he:
-        specifier: ^1.2.0
-        version: 1.2.0
-      windows-1252:
-        specifier: 3.0.4
-        version: 3.0.4
     devDependencies:
       '@types/he':
         specifier: ^1.2.3
@@ -24,6 +17,9 @@ importers:
       esbuild:
         specifier: ^0.27.3
         version: 0.27.3
+      he:
+        specifier: ^1.2.0
+        version: 1.2.0
       oxfmt:
         specifier: ^0.34.0
         version: 0.34.0
@@ -42,6 +38,9 @@ importers:
       vitest:
         specifier: 4.0.18
         version: 4.0.18(@types/node@25.3.0)
+      windows-1252:
+        specifier: 3.0.4
+        version: 3.0.4
 
 packages:
 
