@@ -1,6 +1,6 @@
 {
   "name": "utfu",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "private": false,
   "description": "Replaces busted characters carried over from legacy text encodings with the proper UTF-8 characters.",
   "keywords": [

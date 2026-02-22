@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [0.4.0] - 2026-02-21
+
 - build: add postbuild script to write a minimal `dist/package.json` with
   `main`/`module`/`types` and `exports` fields so the published package
   points at the bundled ESM and CJS outputs.
