@@ -24,7 +24,7 @@ Pass it to either method, `hex`, `htx`, or `txt`, and you'll hopefully get back:
 - `htx` substitutes the HTML escape sequence (ie., `&#x20AC;`)
 - `txt` substitutes the actual character (ie., `€`)
 
-- See substitution chart [here](https://www.i18nqa.com/debug/utf8-debug.html) for mappings, more or less
+- See [substitution chart](https://www.i18nqa.com/debug/utf8-debug.html) for mappings, more or less
 
 ```javascript
 import { hex, htx, txt } from 'utfu'
@@ -47,13 +47,16 @@ const cleanTxt = txt(dirty)
 yarn test
 ```
 
+## CI
+
+This repository includes a GitHub Actions workflow that runs the test suite on push and pull requests (see `.github/workflows/ci.yml`).
+
 ## Author
 
 👤 **Daniel Sieradski <hello@self.agency>**
 
 - Website: [self.agency](https://self.agency)
-- Twitter: [@selfagency_llc](https://twitter.com/selfagency_llc)
-- GitLab: [@selfagency](https://gitlab.com/selfagency)
+- BlueSky: [@self.agency](https://bsky.app/profile/self.agency)
 
 ## Acknowledgements
 

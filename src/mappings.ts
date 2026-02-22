@@ -1,213 +1,218 @@
+export type Mapping = {
+  misrender: { chars: string; hex: string; regex: RegExp };
+  utf8: { chars: string; hex: string; regex: RegExp };
+};
+
 export default [
   {
     misrender: {
       chars: 'â‚¬',
       hex: '\u00e2\u201a\u00ac',
-      regex: /\u00e2\u201a\u00ac/gu,
+      regex: /\u00e2\u201a\u00ac/g,
     },
     utf8: {
       chars: '€',
       hex: '\u20ac',
-      regex: /\u20ac/gu,
+      regex: /\u20ac/g,
     },
   },
   {
     misrender: {
       chars: 'â€š',
       hex: '\u00e2\u20ac\u0161',
-      regex: /\u00e2\u20ac\u0161/gu,
+      regex: /\u00e2\u20ac\u0161/g,
     },
     utf8: {
       chars: '‚',
       hex: '\u201a',
-      regex: /\u201a/gu,
+      regex: /\u201a/g,
     },
   },
   {
     misrender: {
       chars: 'â€ž',
       hex: '\u00e2\u20ac\u017e',
-      regex: /\u00e2\u20ac\u017e/gu,
+      regex: /\u00e2\u20ac\u017e/g,
     },
     utf8: {
       chars: '„',
       hex: '\u201e',
-      regex: /\u201e/gu,
+      regex: /\u201e/g,
     },
   },
   {
     misrender: {
       chars: 'â€¦',
       hex: '\u00e2\u20ac\u00a6',
-      regex: /\u00e2\u20ac\u00a6/gu,
+      regex: /\u00e2\u20ac\u00a6/g,
     },
     utf8: {
       chars: '…',
       hex: '\u2026',
-      regex: /\u2026/gu,
+      regex: /\u2026/g,
     },
   },
   {
     misrender: {
       chars: 'â€ ',
       hex: '\u00e2\u20ac\u00a0',
-      regex: /\u00e2\u20ac\u00a0/gu,
+      regex: /\u00e2\u20ac\u00a0/g,
     },
     utf8: {
       chars: '†',
       hex: '\u2020',
-      regex: /\u2020/gu,
+      regex: /\u2020/g,
     },
   },
   {
     misrender: {
       chars: 'â€¡',
       hex: '\u00e2\u20ac\u00a1',
-      regex: /\u00e2\u20ac\u00a1/gu,
+      regex: /\u00e2\u20ac\u00a1/g,
     },
     utf8: {
       chars: '‡',
       hex: '\u2021',
-      regex: /\u2021/gu,
+      regex: /\u2021/g,
     },
   },
   {
     misrender: {
       chars: 'â€°',
       hex: '\u00e2\u20ac\u00b0',
-      regex: /\u00e2\u20ac\u00b0/gu,
+      regex: /\u00e2\u20ac\u00b0/g,
     },
     utf8: {
       chars: '‰',
       hex: '\u2030',
-      regex: /\u2030/gu,
+      regex: /\u2030/g,
     },
   },
   {
     misrender: {
       chars: 'â€¹',
       hex: '\u00e2\u20ac\u00b9',
-      regex: /\u00e2\u20ac\u00b9/gu,
+      regex: /\u00e2\u20ac\u00b9/g,
     },
     utf8: {
       chars: '‹',
       hex: '\u2039',
-      regex: /\u2039/gu,
+      regex: /\u2039/g,
     },
   },
   {
     misrender: {
       chars: 'â€˜',
       hex: '\u00e2\u20ac\u02dc',
-      regex: /\u00e2\u20ac\u02dc/gu,
+      regex: /\u00e2\u20ac\u02dc/g,
     },
     utf8: {
       chars: '‘',
       hex: '\u2018',
-      regex: /\u2018/gu,
+      regex: /\u2018/g,
     },
   },
   {
     misrender: {
       chars: 'â€™',
       hex: '\u00e2\u20ac\u2122',
-      regex: /\u00e2\u20ac\u2122/gu,
+      regex: /\u00e2\u20ac\u2122/g,
     },
     utf8: {
       chars: '’',
       hex: '\u2019',
-      regex: /\u2019/gu,
+      regex: /\u2019/g,
     },
   },
   {
     misrender: {
       chars: 'â€œ',
       hex: '\u00e2\u20ac\u0153',
-      regex: /\u00e2\u20ac\u0153/gu,
+      regex: /\u00e2\u20ac\u0153/g,
     },
     utf8: {
       chars: '“',
       hex: '\u201c',
-      regex: /\u201c/gu,
+      regex: /\u201c/g,
     },
   },
   {
     misrender: {
       chars: 'â€',
       hex: '\u00e2\u20ac\u009d',
-      regex: /\u00e2\u20ac\u009d/gu,
+      regex: /\u00e2\u20ac\u009d/g,
     },
     utf8: {
       chars: '”',
       hex: '\u201d',
-      regex: /\u201d/gu,
+      regex: /\u201d/g,
     },
   },
   {
     misrender: {
       chars: 'â€¢',
       hex: '\u00e2\u20ac\u00a2',
-      regex: /\u00e2\u20ac\u00a2/gu,
+      regex: /\u00e2\u20ac\u00a2/g,
     },
     utf8: {
       chars: '•',
       hex: '\u2022',
-      regex: /\u2022/gu,
+      regex: /\u2022/g,
     },
   },
   {
     misrender: {
       chars: 'â€“',
       hex: '\u00e2\u20ac\u201c',
-      regex: /\u00e2\u20ac\u201c/gu,
+      regex: /\u00e2\u20ac\u201c/g,
     },
     utf8: {
       chars: '–',
       hex: '\u2013',
-      regex: /\u2013/gu,
+      regex: /\u2013/g,
     },
   },
   {
     misrender: {
       chars: 'â€”',
       hex: '\u00e2\u20ac\u201d',
-      regex: /\u00e2\u20ac\u201d/gu,
+      regex: /\u00e2\u20ac\u201d/g,
     },
     utf8: {
       chars: '—',
       hex: '\u2014',
-      regex: /\u2014/gu,
+      regex: /\u2014/g,
     },
   },
   {
     misrender: {
       chars: 'â„¢',
       hex: '\u00e2\u201e\u00a2',
-      regex: /\u00e2\u201e\u00a2/gu,
+      regex: /\u00e2\u201e\u00a2/g,
     },
     utf8: {
       chars: '™',
       hex: '\u2122',
-      regex: /\u2122/gu,
+      regex: /\u2122/g,
     },
   },
   {
     misrender: {
       chars: 'â€º',
       hex: '\u00e2\u20ac\u00ba',
-      regex: /\u00e2\u20ac\u00ba/gu,
+      regex: /\u00e2\u20ac\u00ba/g,
     },
     utf8: {
       chars: '›',
       hex: '\u203a',
-      regex: /\u203a/gu,
+      regex: /\u203a/g,
     },
   },
   {
     misrender: {
       chars: 'â‚¬',
       hex: '\u00e2\u201a\u00ac',
-      regex: /\u00e2\u201a\u00ac/gu,
+      regex: /\u00e2\u201a\u00ac/g,
     },
     utf8: {
       chars: '€',
@@ -2818,4 +2823,4 @@ export default [
   //     regex: /\u0160/gu,
   //   },
   // },
-]
+] as Mapping[];
