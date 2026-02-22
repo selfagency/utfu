@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>UTF-8 Character Debug Tool</title>
+<link rel="icon" type="image/ico" href="../images/i18nqa32x32.ico">
+<link rel="SHORTCUT ICON" href="http://www.i18nqa.com/favicon.ico">
+
+<meta name="Author" content="Tex Texin">
+<meta name="copyright" content="&copy; 2010, 2011 Tex Texin">
+<meta http-equiv="Content-Language" content="en-US">
+<meta name="keywords" lang="en-US" content="functional test, linguistic test, QA, bug, pseudolocalization, internationalization, localization, globalization, translation, i18n, l10n, g11n,
+I18nQA, I18nGuy, XenCraft, Tex Texin, multinational, multilingual, Unicode, character, encoding, charset">
+<meta name="robots" content="all">
+<meta name="description" content="Table used for debugging common UTF-8 character encoding problems">
+
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link href="../css/i18nqa.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css">
+#dbg th {
+	font-size:small;
+}
+
+span.h4 {
+	color: #003;
+	margin-right: 10px;
+	font-size: large;
+}
+
+td.ucp, td.wcp, td.icp, td.hex
+{
+	font-size: small;
+	color: #006;
+}
+td.icp, .icp {
+	background-color: pink;
+	color: #009;
+}
+td.ch {
+	font-size: medium;
+	color: #009;
+	letter-spacing:3px;
+}
+.nul {
+	border-top: white;
+	border-bottom:white;
+	background-color:gray;
+}
+
+</style>
+
+</head>
+<body>
+<div id ="top" class="body">
+<a href="http://www.i18nqa.com"><img class="logoRight" src="../images/i18nqa-logo.jpg" alt="I18n QA Logo"></a>
+<div class="crumb"><a href="http://www.i18nqa.com">i18nqa.com</a> -&gt; utf8-debug</div>
+
+<h1>UTF-8 Encoding Debugging Chart</h1>
+
+<p class="intro">Here is a <a href="#dbg">Encoding Problem Chart</a> that aids in debugging common UTF-8 character encoding problems.
+See these 3 typical problem scenarios that the chart can help with.</p>
+<ul>
+<li><a href="bug-iso8859-1-vs-windows-1252.html">Encoding Problem 1: Treating UTF-8 Bytes as Windows-1252 or ISO-8859-1</a></li>
+<li><a href="bug-double-conversion.html">Encoding Problem 2: Incorrect Double Mis-Conversion</a></li>
+<li><a href="bug-utf-8-latin1.html">Encoding Problem 3: ISO-8859-1 vs Windows-1252</a></li>
+</ul>
+
+<h2>Debugging Chart Mapping Windows-1252 Characters to UTF-8 Bytes to Latin-1 Characters</h2>
+<p>The following chart shows the characters in Windows-1252 from 128 to 255 (hex 80 to FF). The Unicode code point for each
+character is listed and the hex values for each of the bytes in the UTF-8 encoding for the same characters.
+These UTF-8 bytes are also displayed as if they were Windows-1252 characters.
+You can use this chart to debug
+problems where these sequences of Latin characters occur, where only one character was expected. If you match the sequence that occurs to the sequence in the chart,
+and the expected value in the chart matches the value that you expected to see, then the problem is being caused by UTF-8 bytes being interpreted as
+Windows-1252 (or ISO 8859-1) bytes. See <a href="bug-iso8859-1-vs-windows-1252.html">Encoding Problem: Treating UTF-8 Bytes as Windows-1252 or ISO-8859-1</a>
+
+for a more detailed explanation.
+</p>
+
+  <table id="dbg">
+  <caption>Table for Debugging Common UTF-8 Character Encoding Problems.</caption>
+    <tr><th colspan="2">Code Point</th>     <th colspan="2">Characters</th><th rowspan="2">UTF-8 Bytes</th><th class="nul" rowspan="2">&nbsp;</th>
+    <th colspan="2">Code Point</th>     <th colspan="2">Characters</th><th rowspan="2">UTF-8 Bytes</th>
+
+    </tr>
+    <tr><th>Unicode</th><th>Windows<br>1252</th>    <th>Expected</th><th>Actual</th>
+    <th>Unicode</th><th>Windows<br>1252</th>    <th>Expected</th><th>Actual</th>
+
+    </tr>
+
+   <tr><td class='ucp'> U+20AC </td><td class="icp"> 0x80 </td> <td class='ch'>€</td><td class='ch'>â‚¬</td>   <td class='hex'> %E2  %82  %AC  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00C0 </td><td class='wcp'> 0xC0 </td> <td class='ch'>À</td><td class='ch'>Ã€</td>   <td class='hex'> %C3  %80  </td></tr>
+
+<tr><td class='ucp'></td><td class="icp"> 0x81 </td> <td class='ch'></td><td class='ch'></td>   <td class='hex'> </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00C1 </td><td class='wcp'> 0xC1 </td> <td class='ch'>Á</td><td class='ch'>Ã</td>   <td class='hex'> %C3  %81  </td></tr>
+
+<tr><td class='ucp'> U+201A </td><td class="icp"> 0x82 </td> <td class='ch'>‚</td><td class='ch'>â€š</td>   <td class='hex'> %E2  %80  %9A  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00C2 </td><td class='wcp'> 0xC2 </td> <td class='ch'>Â</td><td class='ch'>Ã‚</td>   <td class='hex'> %C3  %82  </td></tr>
+
+<tr><td class='ucp'> U+0192 </td><td class="icp"> 0x83 </td> <td class='ch'>ƒ</td><td class='ch'>Æ’</td>   <td class='hex'> %C6  %92  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00C3 </td><td class='wcp'> 0xC3 </td> <td class='ch'>Ã</td><td class='ch'>Ãƒ</td>   <td class='hex'> %C3  %83  </td></tr>
+
+<tr><td class='ucp'> U+201E </td><td class="icp"> 0x84 </td> <td class='ch'>„</td><td class='ch'>â€ž</td>   <td class='hex'> %E2  %80  %9E  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00C4 </td><td class='wcp'> 0xC4 </td> <td class='ch'>Ä</td><td class='ch'>Ã„</td>   <td class='hex'> %C3  %84  </td></tr>
+
+<tr><td class='ucp'> U+2026 </td><td class="icp"> 0x85 </td> <td class='ch'>…</td><td class='ch'>â€¦</td>   <td class='hex'> %E2  %80  %A6  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00C5 </td><td class='wcp'> 0xC5 </td> <td class='ch'>Å</td><td class='ch'>Ã…</td>   <td class='hex'> %C3  %85  </td></tr>
+
+<tr><td class='ucp'> U+2020 </td><td class="icp"> 0x86 </td> <td class='ch'>†</td><td class='ch'>â€ </td>   <td class='hex'> %E2  %80  %A0  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00C6 </td><td class='wcp'> 0xC6 </td> <td class='ch'>Æ</td><td class='ch'>Ã†</td>   <td class='hex'> %C3  %86  </td></tr>
+
+<tr><td class='ucp'> U+2021 </td><td class="icp"> 0x87 </td> <td class='ch'>‡</td><td class='ch'>â€¡</td>   <td class='hex'> %E2  %80  %A1  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00C7 </td><td class='wcp'> 0xC7 </td> <td class='ch'>Ç</td><td class='ch'>Ã‡</td>   <td class='hex'> %C3  %87  </td></tr>
+
+<tr><td class='ucp'> U+02C6 </td><td class="icp"> 0x88 </td> <td class='ch'>ˆ</td><td class='ch'>Ë†</td>   <td class='hex'> %CB  %86  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00C8 </td><td class='wcp'> 0xC8 </td> <td class='ch'>È</td><td class='ch'>Ãˆ</td>   <td class='hex'> %C3  %88  </td></tr>
+
+<tr><td class='ucp'> U+2030 </td><td class="icp"> 0x89 </td> <td class='ch'>‰</td><td class='ch'>â€°</td>   <td class='hex'> %E2  %80  %B0  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00C9 </td><td class='wcp'> 0xC9 </td> <td class='ch'>É</td><td class='ch'>Ã‰</td>   <td class='hex'> %C3  %89  </td></tr>
+
+<tr><td class='ucp'> U+0160 </td><td class="icp"> 0x8A </td> <td class='ch'>Š</td><td class='ch'>Å </td>   <td class='hex'> %C5  %A0  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00CA </td><td class='wcp'> 0xCA </td> <td class='ch'>Ê</td><td class='ch'>ÃŠ</td>   <td class='hex'> %C3  %8A  </td></tr>
+
+<tr><td class='ucp'> U+2039 </td><td class="icp"> 0x8B </td> <td class='ch'>‹</td><td class='ch'>â€¹</td>   <td class='hex'> %E2  %80  %B9  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00CB </td><td class='wcp'> 0xCB </td> <td class='ch'>Ë</td><td class='ch'>Ã‹</td>   <td class='hex'> %C3  %8B  </td></tr>
+
+<tr><td class='ucp'> U+0152 </td><td class="icp"> 0x8C </td> <td class='ch'>Œ</td><td class='ch'>Å’</td>   <td class='hex'> %C5  %92  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00CC </td><td class='wcp'> 0xCC </td> <td class='ch'>Ì</td><td class='ch'>ÃŒ</td>   <td class='hex'> %C3  %8C  </td></tr>
+
+<tr><td class='ucp'></td><td class="icp"> 0x8D </td> <td class='ch'></td><td class='ch'></td>   <td class='hex'> </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00CD </td><td class='wcp'> 0xCD </td> <td class='ch'>Í</td><td class='ch'>Ã</td>   <td class='hex'> %C3  %8D  </td></tr>
+
+<tr><td class='ucp'> U+017D </td><td class="icp"> 0x8E </td> <td class='ch'>Ž</td><td class='ch'>Å½</td>   <td class='hex'> %C5  %BD  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00CE </td><td class='wcp'> 0xCE </td> <td class='ch'>Î</td><td class='ch'>ÃŽ</td>   <td class='hex'> %C3  %8E  </td></tr>
+
+<tr><td class='ucp'></td><td class="icp"> 0x8F </td> <td class='ch'></td><td class='ch'></td>   <td class='hex'> </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00CF </td><td class='wcp'> 0xCF </td> <td class='ch'>Ï</td><td class='ch'>Ã</td>   <td class='hex'> %C3  %8F  </td></tr>
+
+<tr><td class='ucp'></td><td class="icp"> 0x90 </td> <td class='ch'></td><td class='ch'></td>   <td class='hex'> </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00D0 </td><td class='wcp'> 0xD0 </td> <td class='ch'>Ð</td><td class='ch'>Ã</td>   <td class='hex'> %C3  %90  </td></tr>
+
+<tr><td class='ucp'> U+2018 </td><td class="icp"> 0x91 </td> <td class='ch'>‘</td><td class='ch'>â€˜</td>   <td class='hex'> %E2  %80  %98  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00D1 </td><td class='wcp'> 0xD1 </td> <td class='ch'>Ñ</td><td class='ch'>Ã‘</td>   <td class='hex'> %C3  %91  </td></tr>
+
+<tr><td class='ucp'> U+2019 </td><td class="icp"> 0x92 </td> <td class='ch'>’</td><td class='ch'>â€™</td>   <td class='hex'> %E2  %80  %99  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00D2 </td><td class='wcp'> 0xD2 </td> <td class='ch'>Ò</td><td class='ch'>Ã’</td>   <td class='hex'> %C3  %92  </td></tr>
+
+<tr><td class='ucp'> U+201C </td><td class="icp"> 0x93 </td> <td class='ch'>“</td><td class='ch'>â€œ</td>   <td class='hex'> %E2  %80  %9C  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00D3 </td><td class='wcp'> 0xD3 </td> <td class='ch'>Ó</td><td class='ch'>Ã“</td>   <td class='hex'> %C3  %93  </td></tr>
+
+<tr><td class='ucp'> U+201D </td><td class="icp"> 0x94 </td> <td class='ch'>”</td><td class='ch'>â€</td>   <td class='hex'> %E2  %80  %9D  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00D4 </td><td class='wcp'> 0xD4 </td> <td class='ch'>Ô</td><td class='ch'>Ã”</td>   <td class='hex'> %C3  %94  </td></tr>
+
+<tr><td class='ucp'> U+2022 </td><td class="icp"> 0x95 </td> <td class='ch'>•</td><td class='ch'>â€¢</td>   <td class='hex'> %E2  %80  %A2  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00D5 </td><td class='wcp'> 0xD5 </td> <td class='ch'>Õ</td><td class='ch'>Ã•</td>   <td class='hex'> %C3  %95  </td></tr>
+
+<tr><td class='ucp'> U+2013 </td><td class="icp"> 0x96 </td> <td class='ch'>–</td><td class='ch'>â€“</td>   <td class='hex'> %E2  %80  %93  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00D6 </td><td class='wcp'> 0xD6 </td> <td class='ch'>Ö</td><td class='ch'>Ã–</td>   <td class='hex'> %C3  %96  </td></tr>
+
+<tr><td class='ucp'> U+2014 </td><td class="icp"> 0x97 </td> <td class='ch'>—</td><td class='ch'>â€”</td>   <td class='hex'> %E2  %80  %94  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00D7 </td><td class='wcp'> 0xD7 </td> <td class='ch'>×</td><td class='ch'>Ã—</td>   <td class='hex'> %C3  %97  </td></tr>
+
+<tr><td class='ucp'> U+02DC </td><td class="icp"> 0x98 </td> <td class='ch'>˜</td><td class='ch'>Ëœ</td>   <td class='hex'> %CB  %9C  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00D8 </td><td class='wcp'> 0xD8 </td> <td class='ch'>Ø</td><td class='ch'>Ã˜</td>   <td class='hex'> %C3  %98  </td></tr>
+
+<tr><td class='ucp'> U+2122 </td><td class="icp"> 0x99 </td> <td class='ch'>™</td><td class='ch'>â„¢</td>   <td class='hex'> %E2  %84  %A2  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00D9 </td><td class='wcp'> 0xD9 </td> <td class='ch'>Ù</td><td class='ch'>Ã™</td>   <td class='hex'> %C3  %99  </td></tr>
+
+<tr><td class='ucp'> U+0161 </td><td class="icp"> 0x9A </td> <td class='ch'>š</td><td class='ch'>Å¡</td>   <td class='hex'> %C5  %A1  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00DA </td><td class='wcp'> 0xDA </td> <td class='ch'>Ú</td><td class='ch'>Ãš</td>   <td class='hex'> %C3  %9A  </td></tr>
+
+<tr><td class='ucp'> U+203A </td><td class="icp"> 0x9B </td> <td class='ch'>›</td><td class='ch'>â€º</td>   <td class='hex'> %E2  %80  %BA  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00DB </td><td class='wcp'> 0xDB </td> <td class='ch'>Û</td><td class='ch'>Ã›</td>   <td class='hex'> %C3  %9B  </td></tr>
+
+<tr><td class='ucp'> U+0153 </td><td class="icp"> 0x9C </td> <td class='ch'>œ</td><td class='ch'>Å“</td>   <td class='hex'> %C5  %93  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00DC </td><td class='wcp'> 0xDC </td> <td class='ch'>Ü</td><td class='ch'>Ãœ</td>   <td class='hex'> %C3  %9C  </td></tr>
+
+<tr><td class='ucp'></td><td class="icp"> 0x9D </td> <td class='ch'></td><td class='ch'></td>   <td class='hex'> </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00DD </td><td class='wcp'> 0xDD </td> <td class='ch'>Ý</td><td class='ch'>Ã</td>   <td class='hex'> %C3  %9D  </td></tr>
+
+<tr><td class='ucp'> U+017E </td><td class="icp"> 0x9E </td> <td class='ch'>ž</td><td class='ch'>Å¾</td>   <td class='hex'> %C5  %BE  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00DE </td><td class='wcp'> 0xDE </td> <td class='ch'>Þ</td><td class='ch'>Ãž</td>   <td class='hex'> %C3  %9E  </td></tr>
+
+<tr><td class='ucp'> U+0178 </td><td class="icp"> 0x9F </td> <td class='ch'>Ÿ</td><td class='ch'>Å¸</td>   <td class='hex'> %C5  %B8  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00DF </td><td class='wcp'> 0xDF </td> <td class='ch'>ß</td><td class='ch'>ÃŸ</td>   <td class='hex'> %C3  %9F  </td></tr>
+
+<tr><td class='ucp'> U+00A0 </td><td class="wcp"> 0xA0 </td> <td class='ch'> </td><td class='ch'>Â </td>   <td class='hex'> %C2  %A0  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00E0 </td><td class='wcp'> 0xE0 </td> <td class='ch'>à</td><td class='ch'>Ã </td>   <td class='hex'> %C3  %A0  </td></tr>
+
+<tr><td class='ucp'> U+00A1 </td><td class="wcp"> 0xA1 </td> <td class='ch'>¡</td><td class='ch'>Â¡</td>   <td class='hex'> %C2  %A1  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00E1 </td><td class='wcp'> 0xE1 </td> <td class='ch'>á</td><td class='ch'>Ã¡</td>   <td class='hex'> %C3  %A1  </td></tr>
+
+<tr><td class='ucp'> U+00A2 </td><td class="wcp"> 0xA2 </td> <td class='ch'>¢</td><td class='ch'>Â¢</td>   <td class='hex'> %C2  %A2  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00E2 </td><td class='wcp'> 0xE2 </td> <td class='ch'>â</td><td class='ch'>Ã¢</td>   <td class='hex'> %C3  %A2  </td></tr>
+
+<tr><td class='ucp'> U+00A3 </td><td class="wcp"> 0xA3 </td> <td class='ch'>£</td><td class='ch'>Â£</td>   <td class='hex'> %C2  %A3  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00E3 </td><td class='wcp'> 0xE3 </td> <td class='ch'>ã</td><td class='ch'>Ã£</td>   <td class='hex'> %C3  %A3  </td></tr>
+
+<tr><td class='ucp'> U+00A4 </td><td class="wcp"> 0xA4 </td> <td class='ch'>¤</td><td class='ch'>Â¤</td>   <td class='hex'> %C2  %A4  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00E4 </td><td class='wcp'> 0xE4 </td> <td class='ch'>ä</td><td class='ch'>Ã¤</td>   <td class='hex'> %C3  %A4  </td></tr>
+
+<tr><td class='ucp'> U+00A5 </td><td class="wcp"> 0xA5 </td> <td class='ch'>¥</td><td class='ch'>Â¥</td>   <td class='hex'> %C2  %A5  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00E5 </td><td class='wcp'> 0xE5 </td> <td class='ch'>å</td><td class='ch'>Ã¥</td>   <td class='hex'> %C3  %A5  </td></tr>
+
+<tr><td class='ucp'> U+00A6 </td><td class="wcp"> 0xA6 </td> <td class='ch'>¦</td><td class='ch'>Â¦</td>   <td class='hex'> %C2  %A6  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00E6 </td><td class='wcp'> 0xE6 </td> <td class='ch'>æ</td><td class='ch'>Ã¦</td>   <td class='hex'> %C3  %A6  </td></tr>
+
+<tr><td class='ucp'> U+00A7 </td><td class="wcp"> 0xA7 </td> <td class='ch'>§</td><td class='ch'>Â§</td>   <td class='hex'> %C2  %A7  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00E7 </td><td class='wcp'> 0xE7 </td> <td class='ch'>ç</td><td class='ch'>Ã§</td>   <td class='hex'> %C3  %A7  </td></tr>
+
+<tr><td class='ucp'> U+00A8 </td><td class="wcp"> 0xA8 </td> <td class='ch'>¨</td><td class='ch'>Â¨</td>   <td class='hex'> %C2  %A8  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00E8 </td><td class='wcp'> 0xE8 </td> <td class='ch'>è</td><td class='ch'>Ã¨</td>   <td class='hex'> %C3  %A8  </td></tr>
+
+<tr><td class='ucp'> U+00A9 </td><td class="wcp"> 0xA9 </td> <td class='ch'>©</td><td class='ch'>Â©</td>   <td class='hex'> %C2  %A9  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00E9 </td><td class='wcp'> 0xE9 </td> <td class='ch'>é</td><td class='ch'>Ã©</td>   <td class='hex'> %C3  %A9  </td></tr>
+
+<tr><td class='ucp'> U+00AA </td><td class="wcp"> 0xAA </td> <td class='ch'>ª</td><td class='ch'>Âª</td>   <td class='hex'> %C2  %AA  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00EA </td><td class='wcp'> 0xEA </td> <td class='ch'>ê</td><td class='ch'>Ãª</td>   <td class='hex'> %C3  %AA  </td></tr>
+
+<tr><td class='ucp'> U+00AB </td><td class="wcp"> 0xAB </td> <td class='ch'>«</td><td class='ch'>Â«</td>   <td class='hex'> %C2  %AB  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00EB </td><td class='wcp'> 0xEB </td> <td class='ch'>ë</td><td class='ch'>Ã«</td>   <td class='hex'> %C3  %AB  </td></tr>
+
+<tr><td class='ucp'> U+00AC </td><td class="wcp"> 0xAC </td> <td class='ch'>¬</td><td class='ch'>Â¬</td>   <td class='hex'> %C2  %AC  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00EC </td><td class='wcp'> 0xEC </td> <td class='ch'>ì</td><td class='ch'>Ã¬</td>   <td class='hex'> %C3  %AC  </td></tr>
+
+<tr><td class='ucp'> U+00AD </td><td class="wcp"> 0xAD </td> <td class='ch'>­</td><td class='ch'>Â­</td>   <td class='hex'> %C2  %AD  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00ED </td><td class='wcp'> 0xED </td> <td class='ch'>í</td><td class='ch'>Ã­</td>   <td class='hex'> %C3  %AD  </td></tr>
+
+<tr><td class='ucp'> U+00AE </td><td class="wcp"> 0xAE </td> <td class='ch'>®</td><td class='ch'>Â®</td>   <td class='hex'> %C2  %AE  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00EE </td><td class='wcp'> 0xEE </td> <td class='ch'>î</td><td class='ch'>Ã®</td>   <td class='hex'> %C3  %AE  </td></tr>
+
+<tr><td class='ucp'> U+00AF </td><td class="wcp"> 0xAF </td> <td class='ch'>¯</td><td class='ch'>Â¯</td>   <td class='hex'> %C2  %AF  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00EF </td><td class='wcp'> 0xEF </td> <td class='ch'>ï</td><td class='ch'>Ã¯</td>   <td class='hex'> %C3  %AF  </td></tr>
+
+<tr><td class='ucp'> U+00B0 </td><td class="wcp"> 0xB0 </td> <td class='ch'>°</td><td class='ch'>Â°</td>   <td class='hex'> %C2  %B0  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00F0 </td><td class='wcp'> 0xF0 </td> <td class='ch'>ð</td><td class='ch'>Ã°</td>   <td class='hex'> %C3  %B0  </td></tr>
+
+<tr><td class='ucp'> U+00B1 </td><td class="wcp"> 0xB1 </td> <td class='ch'>±</td><td class='ch'>Â±</td>   <td class='hex'> %C2  %B1  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00F1 </td><td class='wcp'> 0xF1 </td> <td class='ch'>ñ</td><td class='ch'>Ã±</td>   <td class='hex'> %C3  %B1  </td></tr>
+
+<tr><td class='ucp'> U+00B2 </td><td class="wcp"> 0xB2 </td> <td class='ch'>²</td><td class='ch'>Â²</td>   <td class='hex'> %C2  %B2  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00F2 </td><td class='wcp'> 0xF2 </td> <td class='ch'>ò</td><td class='ch'>Ã²</td>   <td class='hex'> %C3  %B2  </td></tr>
+
+<tr><td class='ucp'> U+00B3 </td><td class="wcp"> 0xB3 </td> <td class='ch'>³</td><td class='ch'>Â³</td>   <td class='hex'> %C2  %B3  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00F3 </td><td class='wcp'> 0xF3 </td> <td class='ch'>ó</td><td class='ch'>Ã³</td>   <td class='hex'> %C3  %B3  </td></tr>
+
+<tr><td class='ucp'> U+00B4 </td><td class="wcp"> 0xB4 </td> <td class='ch'>´</td><td class='ch'>Â´</td>   <td class='hex'> %C2  %B4  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00F4 </td><td class='wcp'> 0xF4 </td> <td class='ch'>ô</td><td class='ch'>Ã´</td>   <td class='hex'> %C3  %B4  </td></tr>
+
+<tr><td class='ucp'> U+00B5 </td><td class="wcp"> 0xB5 </td> <td class='ch'>µ</td><td class='ch'>Âµ</td>   <td class='hex'> %C2  %B5  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00F5 </td><td class='wcp'> 0xF5 </td> <td class='ch'>õ</td><td class='ch'>Ãµ</td>   <td class='hex'> %C3  %B5  </td></tr>
+
+<tr><td class='ucp'> U+00B6 </td><td class="wcp"> 0xB6 </td> <td class='ch'>¶</td><td class='ch'>Â¶</td>   <td class='hex'> %C2  %B6  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00F6 </td><td class='wcp'> 0xF6 </td> <td class='ch'>ö</td><td class='ch'>Ã¶</td>   <td class='hex'> %C3  %B6  </td></tr>
+
+<tr><td class='ucp'> U+00B7 </td><td class="wcp"> 0xB7 </td> <td class='ch'>·</td><td class='ch'>Â·</td>   <td class='hex'> %C2  %B7  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00F7 </td><td class='wcp'> 0xF7 </td> <td class='ch'>÷</td><td class='ch'>Ã·</td>   <td class='hex'> %C3  %B7  </td></tr>
+
+<tr><td class='ucp'> U+00B8 </td><td class="wcp"> 0xB8 </td> <td class='ch'>¸</td><td class='ch'>Â¸</td>   <td class='hex'> %C2  %B8  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00F8 </td><td class='wcp'> 0xF8 </td> <td class='ch'>ø</td><td class='ch'>Ã¸</td>   <td class='hex'> %C3  %B8  </td></tr>
+
+<tr><td class='ucp'> U+00B9 </td><td class="wcp"> 0xB9 </td> <td class='ch'>¹</td><td class='ch'>Â¹</td>   <td class='hex'> %C2  %B9  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00F9 </td><td class='wcp'> 0xF9 </td> <td class='ch'>ù</td><td class='ch'>Ã¹</td>   <td class='hex'> %C3  %B9  </td></tr>
+
+<tr><td class='ucp'> U+00BA </td><td class="wcp"> 0xBA </td> <td class='ch'>º</td><td class='ch'>Âº</td>   <td class='hex'> %C2  %BA  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00FA </td><td class='wcp'> 0xFA </td> <td class='ch'>ú</td><td class='ch'>Ãº</td>   <td class='hex'> %C3  %BA  </td></tr>
+
+<tr><td class='ucp'> U+00BB </td><td class="wcp"> 0xBB </td> <td class='ch'>»</td><td class='ch'>Â»</td>   <td class='hex'> %C2  %BB  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00FB </td><td class='wcp'> 0xFB </td> <td class='ch'>û</td><td class='ch'>Ã»</td>   <td class='hex'> %C3  %BB  </td></tr>
+
+<tr><td class='ucp'> U+00BC </td><td class="wcp"> 0xBC </td> <td class='ch'>¼</td><td class='ch'>Â¼</td>   <td class='hex'> %C2  %BC  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00FC </td><td class='wcp'> 0xFC </td> <td class='ch'>ü</td><td class='ch'>Ã¼</td>   <td class='hex'> %C3  %BC  </td></tr>
+
+<tr><td class='ucp'> U+00BD </td><td class="wcp"> 0xBD </td> <td class='ch'>½</td><td class='ch'>Â½</td>   <td class='hex'> %C2  %BD  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00FD </td><td class='wcp'> 0xFD </td> <td class='ch'>ý</td><td class='ch'>Ã½</td>   <td class='hex'> %C3  %BD  </td></tr>
+
+<tr><td class='ucp'> U+00BE </td><td class="wcp"> 0xBE </td> <td class='ch'>¾</td><td class='ch'>Â¾</td>   <td class='hex'> %C2  %BE  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00FE </td><td class='wcp'> 0xFE </td> <td class='ch'>þ</td><td class='ch'>Ã¾</td>   <td class='hex'> %C3  %BE  </td></tr>
+
+<tr><td class='ucp'> U+00BF </td><td class="wcp"> 0xBF </td> <td class='ch'>¿</td><td class='ch'>Â¿</td>   <td class='hex'> %C2  %BF  </td>
+<td class='nul'>&nbsp;</td><td class='ucp'> U+00FF </td><td class='wcp'> 0xFF </td> <td class='ch'>ÿ</td><td class='ch'>Ã¿</td>   <td class='hex'> %C3  %BF  </td></tr>
+
+  </table>
+
+
+<div class="copyright">Copyright &copy; 2011 Tex Texin. All rights reserved.
+<br><a href="#top">return to top</a>
+</div>
+
+</div>
+</body>
+</html>
