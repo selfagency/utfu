@@ -1,6 +1,6 @@
 # üŧ⨍û ➞ utfu
 
-[![npm](https://img.shields.io/npm/dt/utfu.svg)](https://www.npmjs.com/package/utfu) [![npm](https://img.shields.io/npm/v/utfu.svg)](https://www.npmjs.com/package/utfu) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Twitter: @selfagency_llc](https://img.shields.io/twitter/follow/selfagency_llc.svg?style=social)](https://twitter.com/selfagency_llc)
+[![npm](https://img.shields.io/npm/v/utfu.svg)](https://www.npmjs.com/package/utfu) [![npm](https://img.shields.io/npm/dt/utfu.svg)](https://www.npmjs.com/package/utfu) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Replaces busted characters carried over from legacy text encodings with the proper UTF-8 characters.
 
