@@ -7,7 +7,7 @@ Replaces busted characters carried over from legacy text encodings with the prop
 ## Install
 
 ```sh
-yarn add utfu || npm install utfu
+pnpm add utfu
 ```
 
 ## Usage
@@ -44,7 +44,7 @@ const cleanTxt = txt(dirty)
 ## Run tests
 
 ```sh
-yarn test
+pnpm test
 ```
 
 ## CI
